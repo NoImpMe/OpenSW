@@ -4,6 +4,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 
 public class Register extends JFrame {
     public Register() {
@@ -57,7 +61,7 @@ public class Register extends JFrame {
         passwordLabel.setBounds(20, 140, 130, 25);
         panel.add(passwordLabel);
 
-        JComboBox<String> passwordText = new JComboBox<String>(new String[]{"나의 고향은?", "나의 이름은?", "나의 첫 차는?", "나의 고양이 이름은?"});
+        JComboBox<String> passwordText = new JComboBox<String>(new String[]{"나의 고향은?", "나의 이름은?", "나의 첫 차는?", "나의 초등학교는?"});
         passwordText.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {}
         });
@@ -77,34 +81,36 @@ public class Register extends JFrame {
         panel.add(registerButton);
         registerButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(userText.getText().equals("") || nameText.getText().equals("") || dobText.getText().equals("") || phoneText.getText().equals("") || securityQuestionText.getText().equals("") ) {
-                    JOptionPane.showMessageDialog(Register.this , "빈 칸을 채워주세요");
+
+                    if(userText.getText().equals("") || nameText.getText().equals("") || dobText.getText().equals("") || phoneText.getText().equals("") || securityQuestionText.getText().equals("") ) {
+                        JOptionPane.showMessageDialog(Register.this , "빈 칸을 채워주세요");
+                    }
+                    else {
+                        String name = userText.getText();
+                        String birth = nameText.getText();
+                        String userID = dobText.getText();
+                        String password = phoneText.getText();
+                        String answer = securityQuestionText.getText();
+                        String num = "";
+                        switch(passwordText.getSelectedIndex()) {
+                            case 0: num = "0"; break;
+                            case 1: num = "1"; break;
+                            case 2: num = "2"; break;
+                            case 3: num = "3";
+                        }
+                        try {
+                            BufferedWriter writer = new BufferedWriter(new FileWriter("Code/src/main/account.txt",true));
+                            writer.write(name+","+birth+","+userID+","+password+","+num+","+answer);
+                            writer.newLine();
+                            writer.close();
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                        JOptionPane.showMessageDialog(Register.this , "계정 생성 완료");
+                        Register.this.setVisible(false);
+                    }
                 }
-                else {
-                    BufferedWriter writer = null;
-                    try {
-                        writer = new BufferedWriter(new FileWriter("Code/src/main/account.txt"));
-                    } catch (Exception ex) {
-                        throw new RuntimeException(ex);
-                    }
-                    String passwdtext = passwordText.getToolTipText();
-                    String num = "";
-                    switch(passwordText.getSelectedIndex()) {
-                        case 0: num = "0"; break;
-                        case 1: num = "1"; break;
-                        case 2: num = "2"; break;
-                        case 3: num = "3";
-                    }
-                    try {
-                        writer.append(userText.getText()).append(",").append(nameText.getText()).append(",").append(dobText.getText()).append(",").append(phoneText.getText()).append(",").append(num).append(",").append(securityQuestionText.getText()).append("\n");
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                    //이제 register의 textfield들의 값을 account.txt에 넣을거야
-                    JOptionPane.showMessageDialog(Register.this , "계정 생성 완료");
-                    Register.this.setVisible(false);
-                }
-            }
         });
     }
+
 }

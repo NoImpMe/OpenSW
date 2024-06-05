@@ -3,6 +3,7 @@ package main;
 import javax.swing.*;
 import java.awt.event.*;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 public class Login extends JFrame {
@@ -121,9 +122,9 @@ public class Login extends JFrame {
 
                     while ((line = reader.readLine()) != null) {
                         String[] parts = line.split(",");
-                        if (parts.length >= 2 && parts[0].equals(id)) {
+                        if (parts.length >= 2 && parts[2].equals(id)) {
                             idFound = true;
-                            if (parts[1].equals(password)) {
+                            if (parts[3].equals(password)) {
                                 passwordMatched = true;
                                 break;
                             }
@@ -136,7 +137,7 @@ public class Login extends JFrame {
                     } else if (!passwordMatched) {
                         JOptionPane.showMessageDialog(Login.this, "비밀번호가 틀렸습니다.");
                     } else {
-                        Main main = new Main();
+                        main.Main main = new main.Main();
                         main.setVisible(true);
                     }
                 } catch (IOException ex) {
@@ -149,7 +150,7 @@ public class Login extends JFrame {
     }
 
     private void jButton2ActionPerformed(ActionEvent evt) {
-        Register register = new Register();
+        main.Register register = new main.Register();
         register.setVisible(true);
     }
 
