@@ -1,92 +1,181 @@
 package main;
 
-public class OTP extends javax.swing.JFrame {
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.Random;
+import javax.swing.*;
 
-    public OTP() {
+public class OTP extends JFrame {
+    private Main mainFrame;
+    public OTP(Main mainFrame) {
+        setLocationRelativeTo(null);
         initComponents();
+        initAction();
+        this.mainFrame = mainFrame;
     }
 
     @SuppressWarnings("unchecked")
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        checkbox1 = new java.awt.Checkbox();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jPanel1 = new JPanel();
+        checkbox1 = new Checkbox();
+        jLabel1 = new JLabel();
+        jTextField1 = new JTextField();
+        jButton1 = new JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
         checkbox1.setLabel("encode");
 
-        jLabel1.setBackground(new java.awt.Color(122, 232, 241));
-        jLabel1.setFont(new java.awt.Font("맑은 고딕", 1, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("23  4 56 99 1");
+        jLabel1.setBackground(new Color(122, 232, 241));
+        jLabel1.setFont(new Font("맑은 고딕", Font.BOLD, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(SwingConstants.CENTER);
+        jLabel1.setText("");
         jLabel1.setOpaque(true);
 
-        jTextField1.setFont(new java.awt.Font("맑은 고딕", 0, 18)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("23456991");
+        jTextField1.setFont(new Font("맑은 고딕", Font.PLAIN, 18)); // NOI18N
+        jTextField1.setHorizontalAlignment(JTextField.CENTER);
+        jTextField1.setText("");
 
         jButton1.setText("인증하기");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGap(31, 31, 31)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(jTextField1, GroupLayout.PREFERRED_SIZE, 278, GroupLayout.PREFERRED_SIZE)
                                                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                .addComponent(checkbox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                                .addComponent(checkbox1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 216, GroupLayout.PREFERRED_SIZE))))
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGap(140, 140, 140)
                                                 .addComponent(jButton1)))
                                 .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(35, 35, 35)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(checkbox1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(checkbox1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(53, 53, 53)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextField1, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE)
                                 .addGap(42, 42, 42)
                                 .addComponent(jButton1)
                                 .addContainerGap(51, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
+        jButton1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                verifyInput();
+
+            }
+        });
+        checkbox1.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                if(e.getStateChange() == ItemEvent.SELECTED) {
+                    jLabel1.setText(formatNumber(decodeNumber(jLabel1.getText())));
+                }
+                else{
+                    jLabel1.setText(formatNumber(encodeNumber(generateRandomNumber())));
+                }
+            }
+        });
+    }
+    private void initAction() {
+        if (checkbox1.getState()) {
+            String randomNumbers = generateRandomNumber();
+            jLabel1.setText(formatNumber(randomNumbers));
+        } else {
+            String randomNumbers = generateRandomNumber();
+            String encodedNumbers = encodeNumber(randomNumbers);
+            jLabel1.setText(formatNumber(encodedNumbers));
+        }
     }
 
-    /**
-     * @param args the command line arguments
-     */
+    private String generateRandomNumber() {
+        Random random = new Random();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 9; i++) {
+            int digit = random.nextInt(10); // Generates a random digit between 0 and 9
+            sb.append(digit);
+        }
+        return sb.toString();
+    }
+
+    private String formatNumber(String number) {
+        StringBuilder formatted = new StringBuilder();
+        for (int i = 0; i < number.length(); i++) {
+            if (i > 0 && i % 3 == 0) {
+                formatted.append(" ");
+            }
+            formatted.append(number.charAt(i));
+        }
+        return formatted.toString();
+    }
+
+    private String encodeNumber(String number) {
+        StringBuilder encoded = new StringBuilder();
+        for (char c : number.toCharArray()) {
+            if(c == ' '){
+                continue;
+            }
+            encoded.append((char) (c + 17));
+        }
+        return encoded.toString();
+    }
+    private void verifyInput() {
+        String input = jTextField1.getText().replace(" ", "");
+        String labelValue = jLabel1.getText().replace(" ", ""); // 공백 제거
+
+        if (!input.equals(labelValue) || !checkbox1.getState()) {
+            JOptionPane.showMessageDialog(this, "인증에 실패하였습니다.", "인증 실패", JOptionPane.ERROR_MESSAGE);
+            initAction();
+        }
+        else{
+            mainFrame.updateOTPButton();
+            dispose();
+        }
+    }
+    private String decodeNumber(String encoded) {
+        StringBuilder decoded = new StringBuilder();
+        for (char c : encoded.toCharArray()) {
+            if (c == ' '){
+                continue;
+            }
+            char decodedChar = (char) (c - 17);
+            decoded.append(decodedChar);
+        }
+        return decoded.toString();
+    }
     public static void main(String args[]) {
 
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
@@ -96,21 +185,16 @@ public class OTP extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(OTP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(OTP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(OTP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new OTP().setVisible(true);
-            }
-        });
+
     }
 
-    private java.awt.Checkbox checkbox1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-
+    private JPanel jPanel1;
+    private JButton jButton1;
+    private JLabel jLabel1;
+    private JTextField jTextField1;
+    private Checkbox checkbox1;
 }

@@ -1,4 +1,4 @@
-package Code.src.main;
+package main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,6 +18,10 @@ public class FindID extends JFrame {
     private JLabel jLabel5;
 
     public FindID() {
+        setTitle("Find ID");
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null);
         initComponents();
     }
 
@@ -31,8 +35,6 @@ public class FindID extends JFrame {
         jLabel4 = new JLabel();
         jButton1 = new JButton();
         jLabel5 = new JLabel();
-
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         jLabel2.setFont(new Font("맑은 고딕", Font.BOLD, 12));
         jLabel2.setHorizontalAlignment(SwingConstants.CENTER);
@@ -132,7 +134,6 @@ public class FindID extends JFrame {
         String foundId = "";
         try (BufferedReader reader = new BufferedReader(new FileReader("Code/src/main/account.txt"))) {
             String line;
-            boolean idFound = false;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts[1].equals(jTextField2.getText()) && parts[0].equals(jTextField3.getText())) {

@@ -23,6 +23,7 @@ public class Login extends JFrame {
 
     @SuppressWarnings("unchecked")
     private void initComponents() {
+
         jPanel1 = new JPanel();
         jButton1 = new JButton();
         jFormattedTextField1 = new JFormattedTextField();
@@ -31,20 +32,15 @@ public class Login extends JFrame {
         jLabel1 = new JLabel();
         jButton3 = new JButton();
         jButton4 = new JButton();
-
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         jButton1.setText("Login");
 
-        jFormattedTextField1.setText("ID");
+        jFormattedTextField1.setText("");
         jFormattedTextField1.setFont(new java.awt.Font("맑은 고딕", 1, 18));
 
-        jPasswordField1.setText("jPasswordField1");
+        jPasswordField1.setText("");
         jButton2.setText("Register");
-        jButton2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+
         jLabel1.setFont(new java.awt.Font("맑은 고딕", 1, 36));
         jLabel1.setHorizontalAlignment(SwingConstants.CENTER);
         jLabel1.setText("Safe Local Lock");
@@ -137,8 +133,9 @@ public class Login extends JFrame {
                     } else if (!passwordMatched) {
                         JOptionPane.showMessageDialog(Login.this, "비밀번호가 틀렸습니다.");
                     } else {
-                        main.Main main = new main.Main();
+                        Main main = new Main();
                         main.setVisible(true);
+                        dispose();
                     }
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(Login.this, "파일을 읽어오는 중 오류가 발생했습니다.");
@@ -147,15 +144,34 @@ public class Login extends JFrame {
                 }
             }
         });
+        jButton2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jButton3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jButton4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
     }
-
     private void jButton2ActionPerformed(ActionEvent evt) {
-        main.Register register = new main.Register();
+        Register register = new Register();
         register.setVisible(true);
     }
-
-    private void jPasswordField1ActionPerformed(ActionEvent evt) {
-        // TODO add your handling code here:
+    private void jButton3ActionPerformed(ActionEvent evt) {
+        FindID findID = new FindID();
+        findID.setVisible(true);
+    }
+    private void jButton4ActionPerformed(ActionEvent evt) {
+        FindPasswd findPasswd = new FindPasswd();
+        findPasswd.setVisible(true);
     }
 
     public static void main(String args[]) {

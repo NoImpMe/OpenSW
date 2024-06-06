@@ -1,26 +1,33 @@
 package main;
 
-public class ShowData extends javax.swing.JFrame {
+import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
-    public ShowData() {
+public class ShowData extends JFrame {
+    private JLabel jLabel;
+
+    public ShowData(JLabel jLabel) throws Exception {
+        setLocationRelativeTo(null);
+        this.jLabel = jLabel;
         initComponents();
     }
 
     @SuppressWarnings("unchecked")
-    private void initComponents() {
+    private void initComponents() throws Exception {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jLabel1 = new JLabel();
+        jLabel2 = new JLabel();
+        jLabel3 = new JLabel();
+        jLabel4 = new JLabel();
+        jLabel5 = new JLabel();
+        jLabel6 = new JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("맑은 고딕", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Data");
+        jLabel1.setText(jLabel.getText());
 
         jLabel2.setFont(new java.awt.Font("맑은 고딕", 1, 14)); // NOI18N
         jLabel2.setText("의 정보입니다.");
@@ -29,9 +36,9 @@ public class ShowData extends javax.swing.JFrame {
 
         jLabel4.setText("Password");
 
-        jLabel5.setText("gildong");
+        jLabel5.setText("");
 
-        jLabel6.setText("asdsdw@31");
+        jLabel6.setText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,12 +83,28 @@ public class ShowData extends javax.swing.JFrame {
                                         .addComponent(jLabel6))
                                 .addContainerGap(35, Short.MAX_VALUE))
         );
-
+        loadAndDisplayData();
         pack();
     }
 
-    public static void main(String args[]) {
+    public void loadAndDisplayData() throws Exception {
+        String encryptionKey = "1234567890123456"; // 16자리 키
+        BufferedReader reader = new BufferedReader(new FileReader("Code/src/main/Data.txt"));
+        String line;
+        while ((line = reader.readLine()) != null) {
+            String[] parts = line.split(",");
+            if (parts[0].equals(jLabel.getText())) {
+                String encryptedId = parts[1];
+                String encryptedPassword = parts[2];
+                String decryptedId = AESUtil.decrypt(encryptedId, encryptionKey);
+                String decryptedPassword = AESUtil.decrypt(encryptedPassword, encryptionKey);
+                jLabel5.setText(decryptedId);
+                jLabel6.setText(decryptedPassword);
+            }
+        }
+    }
 
+    public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -89,26 +112,15 @@ public class ShowData extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ShowData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ShowData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ShowData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ShowData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ShowData().setVisible(true);
-            }
-        });
     }
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+
+    private JLabel jLabel1;
+    private JLabel jLabel2;
+    private JLabel jLabel3;
+    private JLabel jLabel4;
+    private JLabel jLabel5;
+    private JLabel jLabel6;
 }

@@ -11,7 +11,6 @@ import java.nio.file.Paths;
 
 public class Register extends JFrame {
     public Register() {
-        // JFrame 설정
         setTitle("Register Account");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
