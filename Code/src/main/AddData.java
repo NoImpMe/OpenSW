@@ -8,16 +8,16 @@ import java.awt.event.FocusListener;
 import java.io.*;
 
 public class AddData extends JFrame {
+    private JPanel jPanel;
     private JLabel jLabel;
     private JButton jButton;
 
-    private JButton jButton2;
-    private JButton jButton3;
-    private JLabel jLabel1;
-    private JLabel jLabel2;
-    private JLabel jLabel3;
-    private JPanel jPanel1;
-    private JTextField jTextField1;
+    private JButton addBtn;
+    private JButton cancelBtn;
+    private JLabel explain;
+    private JLabel siteName;
+    private JLabel max;
+    private JTextField nameInput;
 
     public AddData(JButton jButton, JLabel jLabel) {
         setLocationRelativeTo(null);
@@ -29,67 +29,67 @@ public class AddData extends JFrame {
     @SuppressWarnings("unchecked")
     private void initComponents() {
 
-        jPanel1 = new JPanel();
-        jLabel1 = new JLabel();
-        jLabel2 = new JLabel();
-        jLabel3 = new JLabel();
-        jTextField1 = new JTextField();
-        jButton2 = new JButton();
-        jButton3 = new JButton();
+        jPanel = new JPanel();
+        explain = new JLabel();
+        siteName = new JLabel();
+        max = new JLabel();
+        nameInput = new JTextField();
+        addBtn = new JButton();
+        cancelBtn = new JButton();
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("맑은 고딕", 1, 14)); // NOI18N
-        jLabel1.setText("추가 할 데이터를 입력해주세요.");
+        explain.setFont(new java.awt.Font("맑은 고딕", 1, 14)); // NOI18N
+        explain.setText("추가 할 데이터를 입력해주세요.");
 
-        jLabel2.setText("사이트 이름");
-        jLabel3.setText("최대 4자까지 가능");
-        jButton2.setText("추가");
+        siteName.setText("사이트 이름");
+        max.setText("최대 4자까지 가능");
+        addBtn.setText("추가");
 
-        jButton3.setText("취소");
+        cancelBtn.setText("취소");
 
-        GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
+        GroupLayout jPanelLayout = new GroupLayout(jPanel);
+        jPanel.setLayout(jPanelLayout);
+        jPanelLayout.setHorizontalGroup(
+                jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelLayout.createSequentialGroup()
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanelLayout.createSequentialGroup()
                                                 .addGap(98, 98, 98)
-                                                .addComponent(jLabel1))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(explain))
+                                        .addGroup(jPanelLayout.createSequentialGroup()
                                                 .addGap(25, 25, 25)
-                                                .addComponent(jLabel2)
+                                                .addComponent(siteName)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(jTextField1, GroupLayout.PREFERRED_SIZE, 245, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(nameInput, GroupLayout.PREFERRED_SIZE, 245, GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanelLayout.createSequentialGroup()
                                                 .addGap(110,110,110)
-                                                .addComponent(jLabel3)))
+                                                .addComponent(max)))
                                 .addContainerGap(19, Short.MAX_VALUE))
-                        .addGroup(GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(GroupLayout.Alignment.LEADING, jPanelLayout.createSequentialGroup()
                                 .addGap(90,90,90)
-                                .addComponent(jButton2)
+                                .addComponent(addBtn)
                                 .addGap(75, 75, 75)
-                                .addComponent(jButton3)
+                                .addComponent(cancelBtn)
                                 .addGap(19, 19, 19))
         );
 
-        jPanel1Layout.setVerticalGroup(
-                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanelLayout.setVerticalGroup(
+                jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jLabel1)
+                                .addComponent(explain)
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jTextField1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(siteName)
+                                        .addComponent(nameInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                 .addGap(20, 20, 20))
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel3))
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(max))
                                 .addGap(22,22,22)
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jButton2)
-                                        .addComponent(jButton3))
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(addBtn)
+                                        .addComponent(cancelBtn))
                                 .addGap(16, 16, 16))
         );
 
@@ -98,23 +98,23 @@ public class AddData extends JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
 
-        jButton2.addActionListener(new ActionListener() {
+        addBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                jButton2ActionPerformed(e);
+                addBtnActionPerformed(e);
                 dispose();
             }
         });
-        jButton3.addActionListener(new ActionListener() {
+        cancelBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
@@ -122,33 +122,14 @@ public class AddData extends JFrame {
         });
     }
 
-    private void jButton2ActionPerformed(ActionEvent evt){
-        if(jTextField1.getText() == "" || jTextField1.getText().length() > 4){
+    private void addBtnActionPerformed(ActionEvent evt){
+        if(nameInput.getText() == "" || nameInput.getText().length() > 4){
             JOptionPane.showMessageDialog(this, "올바른 이름을 입력해주세요", "입력 오류", JOptionPane.ERROR_MESSAGE);
         }
         else{
-            jLabel.setText(jTextField1.getText());
-            jButton.setText(jTextField1.getText());
+            jLabel.setText(nameInput.getText());
+            jButton.setText(nameInput.getText());
         }
     }
 
-    public static void main(String args[]) {
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-
-    }
 }

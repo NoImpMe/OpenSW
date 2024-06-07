@@ -13,7 +13,6 @@ public class AESUtil {
     private static final String CHARSET = "UTF-8";
     private static final int KEY_SIZE = 128;
 
-    // 암호화
     public static String encrypt(String data, String key) throws Exception {
         Cipher cipher = Cipher.getInstance(AES);
         cipher.init(Cipher.ENCRYPT_MODE, getSecretKey(key));
@@ -21,7 +20,6 @@ public class AESUtil {
         return Base64.getEncoder().encodeToString(encrypted);
     }
 
-    // 복호화
     public static String decrypt(String encryptedData, String key) throws Exception {
         Cipher cipher = Cipher.getInstance(AES);
         cipher.init(Cipher.DECRYPT_MODE, getSecretKey(key));
@@ -29,7 +27,6 @@ public class AESUtil {
         return new String(decrypted, CHARSET);
     }
 
-    // 비밀 키 생성
     private static SecretKeySpec getSecretKey(String key) throws Exception {
         byte[] keyBytes = key.getBytes(CHARSET);
         SecureRandom secureRandom = new SecureRandom();

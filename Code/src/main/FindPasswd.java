@@ -11,16 +11,16 @@ import java.io.IOException;
 
 public class FindPasswd extends JFrame {
 
-    private JPanel jPanel1;
-    private JLabel jLabel1;
-    private JTextField jTextField1;
-    private JLabel jLabel2;
-    private JComboBox<String> jComboBox1;
-    private JLabel jLabel3;
-    private JTextField jTextField2;
-    private JLabel jLabel4;
-    private JLabel jLabel5;
-    private JButton jButton1;
+    private JPanel jPanel;
+    private JLabel idLabel;
+    private JLabel questionLabel;
+    private JLabel answerLabel;
+    private JLabel pwLabel;
+    private JLabel resultLabel;
+    private JTextField idInput;
+    private JComboBox<String> questions;
+    private JTextField answerInput;
+    private JButton searchBtn;
 
     public FindPasswd() {
         setLocationRelativeTo(null);
@@ -30,119 +30,117 @@ public class FindPasswd extends JFrame {
     @SuppressWarnings("unchecked")
     private void initComponents() {
 
-        jPanel1 = new JPanel();
-        jLabel1 = new JLabel();
-        jTextField1 = new JTextField();
-        jLabel2 = new JLabel();
-        jComboBox1 = new JComboBox<>();
-        jLabel3 = new JLabel();
-        jTextField2 = new JTextField();
-        jLabel4 = new JLabel();
-        jLabel5 = new JLabel();
-        jButton1 = new JButton();
+        jPanel = new JPanel();
+        idLabel = new JLabel();
+        idInput = new JTextField();
+        questionLabel = new JLabel();
+        questions = new JComboBox<>();
+        answerLabel = new JLabel();
+        answerInput = new JTextField();
+        pwLabel = new JLabel();
+        resultLabel = new JLabel();
+        searchBtn = new JButton();
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new Font("맑은 고딕", Font.BOLD, 12));
-        jLabel1.setHorizontalAlignment(SwingConstants.CENTER);
-        jLabel1.setText("ID");
-        jLabel1.setHorizontalTextPosition(SwingConstants.CENTER);
+        idLabel.setFont(new Font("맑은 고딕", Font.BOLD, 12));
+        idLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        idLabel.setText("ID");
+        idLabel.setHorizontalTextPosition(SwingConstants.CENTER);
 
-        jTextField1.setText("");
-        jTextField1.addActionListener(this::jTextField1ActionPerformed);
+        idInput.setText("");
 
-        jLabel2.setFont(new Font("맑은 고딕", Font.BOLD, 12));
-        jLabel2.setHorizontalAlignment(SwingConstants.CENTER);
-        jLabel2.setText("질문");
-        jLabel2.setHorizontalTextPosition(SwingConstants.CENTER);
+        questionLabel.setFont(new Font("맑은 고딕", Font.BOLD, 12));
+        questionLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        questionLabel.setText("질문");
+        questionLabel.setHorizontalTextPosition(SwingConstants.CENTER);
 
-        jComboBox1.setModel(new DefaultComboBoxModel<>(new String[]{"나의 고향은?", "나의 이름은?", "나의 첫 차는?", "나의 초등학교는?"}));
-        jComboBox1.addActionListener(this::jComboBox1ActionPerformed);
+        questions.setModel(new DefaultComboBoxModel<>(new String[]{"나의 고향은?", "나의 이름은?", "나의 첫 차는?", "나의 초등학교는?"}));
+      
 
-        jLabel3.setFont(new Font("맑은 고딕", Font.BOLD, 12));
-        jLabel3.setHorizontalAlignment(SwingConstants.CENTER);
-        jLabel3.setText("답변");
-        jLabel3.setHorizontalTextPosition(SwingConstants.CENTER);
+        answerLabel.setFont(new Font("맑은 고딕", Font.BOLD, 12));
+        answerLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        answerLabel.setText("답변");
+        answerLabel.setHorizontalTextPosition(SwingConstants.CENTER);
 
-        jTextField2.setText("");
-        jTextField2.addActionListener(this::jTextField2ActionPerformed);
+        answerInput.setText("");
 
-        jLabel4.setFont(new Font("맑은 고딕", Font.BOLD, 12));
-        jLabel4.setHorizontalAlignment(SwingConstants.CENTER);
-        jLabel4.setText("검색된 PW");
-        jLabel4.setHorizontalTextPosition(SwingConstants.CENTER);
+        pwLabel.setFont(new Font("맑은 고딕", Font.BOLD, 12));
+        pwLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        pwLabel.setText("검색된 PW");
+        pwLabel.setHorizontalTextPosition(SwingConstants.CENTER);
 
-        jLabel5.setText("");
+        resultLabel.setText("");
 
-        jButton1.setText("PW 검색");
-        jButton1.addActionListener(new ActionListener() {
+        searchBtn.setText("PW 검색");
+        searchBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String id = jTextField1.getText().trim();
-                String num = jComboBox1.getSelectedIndex()+"";
-                String answer = jTextField2.getText().trim();
+                String id = idInput.getText().trim();
+                String num = questions.getSelectedIndex()+"";
+                String answer = answerInput.getText().trim();
                 String foundPassword = null;
                 try {
                     foundPassword = searchAccount(id, num,answer);
                 } catch (FileNotFoundException ex) {
                     throw new RuntimeException(ex);
                 }
-                jLabel5.setText(foundPassword);
+                resultLabel.setText(foundPassword);
             }
         });
-        GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
+        GroupLayout jPanelLayout = new GroupLayout(jPanel);
+        jPanel.setLayout(jPanelLayout);
+        jPanelLayout.setHorizontalGroup(
+                jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelLayout.createSequentialGroup()
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanelLayout.createSequentialGroup()
                                                 .addGap(54, 54, 54)
-                                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                .addComponent(jLabel4)
+                                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                                        .addGroup(jPanelLayout.createSequentialGroup()
+                                                                .addComponent(pwLabel)
                                                                 .addGap(18, 18, 18)
-                                                                .addComponent(jLabel5, GroupLayout.PREFERRED_SIZE, 160, GroupLayout.PREFERRED_SIZE))
-                                                        .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                        .addComponent(jLabel3)
+                                                                .addComponent(resultLabel, GroupLayout.PREFERRED_SIZE, 160, GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                .addGroup(jPanelLayout.createSequentialGroup()
+                                                                        .addComponent(answerLabel)
                                                                         .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                        .addComponent(jTextField2, GroupLayout.PREFERRED_SIZE, 160, GroupLayout.PREFERRED_SIZE))
-                                                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                                .addComponent(jLabel1)
+                                                                        .addComponent(answerInput, GroupLayout.PREFERRED_SIZE, 160, GroupLayout.PREFERRED_SIZE))
+                                                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                                                        .addGroup(jPanelLayout.createSequentialGroup()
+                                                                                .addComponent(idLabel)
                                                                                 .addGap(18, 18, 18)
-                                                                                .addComponent(jTextField1, GroupLayout.PREFERRED_SIZE, 160, GroupLayout.PREFERRED_SIZE))
-                                                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                                .addComponent(jLabel2)
+                                                                                .addComponent(idInput, GroupLayout.PREFERRED_SIZE, 160, GroupLayout.PREFERRED_SIZE))
+                                                                        .addGroup(jPanelLayout.createSequentialGroup()
+                                                                                .addComponent(questionLabel)
                                                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                                .addComponent(jComboBox1, GroupLayout.PREFERRED_SIZE, 159, GroupLayout.PREFERRED_SIZE))))))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                                                .addComponent(questions, GroupLayout.PREFERRED_SIZE, 159, GroupLayout.PREFERRED_SIZE))))))
+                                        .addGroup(jPanelLayout.createSequentialGroup()
                                                 .addGap(134, 134, 134)
-                                                .addComponent(jButton1)))
+                                                .addComponent(searchBtn)))
                                 .addContainerGap(65, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanelLayout.setVerticalGroup(
+                jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelLayout.createSequentialGroup()
                                 .addGap(35, 35, 35)
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel1)
-                                        .addComponent(jTextField1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(idLabel)
+                                        .addComponent(idInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jComboBox1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel2))
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(questions, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(questionLabel))
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel3)
-                                        .addComponent(jTextField2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(answerLabel)
+                                        .addComponent(answerInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton1)
+                                .addComponent(searchBtn)
                                 .addGap(19, 19, 19)
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel4)
-                                        .addComponent(jLabel5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(pwLabel)
+                                        .addComponent(resultLabel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap(53, Short.MAX_VALUE))
         );
 
@@ -150,34 +148,24 @@ public class FindPasswd extends JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+                        .addComponent(jPanel, GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                        .addComponent(jPanel, GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
         );
 
         pack();
     }
 
-    private void jComboBox1ActionPerformed(ActionEvent evt) {
-        // TODO add your handling code here:
-    }
 
-    private void jTextField1ActionPerformed(ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void jTextField2ActionPerformed(ActionEvent evt) {
-        // TODO add your handling code here:
-    }
     private String searchAccount(String id, String question, String answer) throws FileNotFoundException {
         String foundPasswd = "";
         try (BufferedReader reader = new BufferedReader(new FileReader("Code/src/main/account.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts[2].equals(jTextField1.getText()) && parts[4].equals(question) && parts[5].equals(jTextField2.getText())) {
+                if (parts[2].equals(idInput.getText()) && parts[4].equals(question) && parts[5].equals(answerInput.getText())) {
                     foundPasswd = parts[3];
                 } else {
                     JOptionPane.showMessageDialog(FindPasswd.this, "입력한 정보에 맞는 Password가 없습니다.");
@@ -188,20 +176,5 @@ public class FindPasswd extends JFrame {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-    public static void main(String args[]) {
-
-        try {
-            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FindPasswd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-
-        EventQueue.invokeLater(() -> new FindPasswd().setVisible(true));
     }
 }

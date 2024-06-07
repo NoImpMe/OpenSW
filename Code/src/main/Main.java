@@ -4,8 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.FileReader;
 
 public class Main extends javax.swing.JFrame {
 
@@ -16,7 +14,7 @@ public class Main extends javax.swing.JFrame {
 
     @SuppressWarnings("unchecked")
     private void initComponents() {
-        jPanel1 = new JPanel();
+        jPanel = new JPanel();
         btn1 = new JButton();
         btn2 = new JButton();
         btn3 = new JButton();
@@ -47,10 +45,10 @@ public class Main extends javax.swing.JFrame {
         label13 = new JLabel();
         label14 = new JLabel();
         label15 = new JLabel();
-        otpButton = new JButton();
+        otpBtn = new JButton();
         mainTitle = new JLabel();
-        randomPWButton = new JButton();
-        checkbox1 = new Checkbox("Show Data (체크시 데이터 확인)");
+        randomPWBtn = new JButton();
+        showCheck = new Checkbox("Show Data (체크시 데이터 확인)");
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
         btn1.setFont(new java.awt.Font("맑은 고딕", 1, 12));
@@ -143,27 +141,27 @@ public class Main extends javax.swing.JFrame {
         label15.setHorizontalAlignment(SwingConstants.CENTER);
         label15.setText("null");
 
-        otpButton.setText("OTP 인증하기");
+        otpBtn.setText("OTP 인증하기");
 
         mainTitle.setFont(new java.awt.Font("맑은 고딕", 1, 24));
         mainTitle.setHorizontalAlignment(SwingConstants.CENTER);
         mainTitle.setText("Safe Local Lock");
 
-        randomPWButton.setText("Random PW 생성");
+        randomPWBtn.setText("Random PW 생성");
 
-        GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
+        GroupLayout jPanelLayout = new GroupLayout(jPanel);
+        jPanel.setLayout(jPanelLayout);
+        jPanelLayout.setHorizontalGroup(
+                jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanelLayout.createSequentialGroup()
+                                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                         .addComponent(mainTitle, GroupLayout.PREFERRED_SIZE, 500, GroupLayout.PREFERRED_SIZE)
-                                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                        .addGroup(jPanelLayout.createSequentialGroup()
                                                                 .addGap(30,30,30)
-                                                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                                                         .addComponent(btn1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                                         .addComponent(label1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                                         .addComponent(btn6, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE)
@@ -171,7 +169,7 @@ public class Main extends javax.swing.JFrame {
                                                                         .addComponent(btn11, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
                                                                         .addComponent(label11, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE))
                                                                 .addGap(40, 40, 40)
-                                                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                                                         .addComponent(btn2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                                         .addComponent(label2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                                         .addComponent(btn7)
@@ -179,9 +177,9 @@ public class Main extends javax.swing.JFrame {
                                                                         .addComponent(btn12)
                                                                         .addComponent(label12, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE))
                                                                 .addGap(40, 40, 40)
-                                                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                        .addGroup(jPanelLayout.createSequentialGroup()
+                                                                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                                                         .addComponent(btn3)
                                                                                         .addComponent(btn8)
                                                                                         .addComponent(btn13)
@@ -189,7 +187,7 @@ public class Main extends javax.swing.JFrame {
                                                                                         .addComponent(label8, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
                                                                                         .addComponent(label13, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE))
                                                                                 .addGap(40, 40, 40)
-                                                                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                                                         .addComponent(btn4)
                                                                                         .addComponent(btn9)
                                                                                         .addComponent(btn14)
@@ -197,75 +195,75 @@ public class Main extends javax.swing.JFrame {
                                                                                         .addComponent(label9, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
                                                                                         .addComponent(label14, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE))
                                                                                 .addGap(40, 40, 40)
-                                                                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                                                         .addComponent(btn5)
                                                                                         .addComponent(btn10)
                                                                                         .addComponent(btn15)
                                                                                         .addComponent(label5, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
                                                                                         .addComponent(label10, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
                                                                                         .addComponent(label15, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)))))
-                                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                        .addGroup(jPanelLayout.createSequentialGroup()
                                                                 .addGap(5, 5, 5)
-                                                                .addComponent(randomPWButton)
+                                                                .addComponent(randomPWBtn)
                                                                 .addGap(5, 5, 5)
-                                                                .addComponent(otpButton)
+                                                                .addComponent(otpBtn)
                                                                 .addGap(50,50,50)
-                                                                .addComponent(checkbox1)))
+                                                                .addComponent(showCheck)))
                                         .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         );
 
-        jPanel1Layout.setVerticalGroup(
-                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanelLayout.setVerticalGroup(
+                jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(mainTitle, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(btn1, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(btn2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(btn3, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(btn4, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(btn5, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(label1, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(label2, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(label3, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(label4, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(label5, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE))
                                 .addGap(30, 30, 30)
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(btn6, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(btn7, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(btn8, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(btn9, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(btn10, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(label6, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(label7, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(label8, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(label9, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(label10, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE))
                                 .addGap(30, 30, 30)
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(btn11, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(btn12, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(btn13, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(btn14, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(btn15, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(label11, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(label12, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(label13, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(label14, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(label15, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE))
                                 .addGap(46, 46, 46)
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(randomPWButton)
-                                        .addComponent(otpButton)
-                                        .addComponent(checkbox1))
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(randomPWBtn)
+                                        .addComponent(otpBtn)
+                                        .addComponent(showCheck))
                                 .addContainerGap())
         );
 
@@ -274,19 +272,19 @@ public class Main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         btn1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(otpButton.getText().equals("OTP 인증완료")){
-                    if(!checkbox1.getState()){
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
                         if(label1.getText().equals("null")){
                             AddData addData = new AddData(btn1,label1);
                             addData.setVisible(true);
@@ -314,8 +312,8 @@ public class Main extends javax.swing.JFrame {
         btn2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(otpButton.getText().equals("OTP 인증완료")){
-                    if(!checkbox1.getState()){
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
                         if(label2.getText().equals("null")){
                             AddData addData = new AddData(btn2,label2);
                             addData.setVisible(true);
@@ -343,8 +341,8 @@ public class Main extends javax.swing.JFrame {
         btn3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(otpButton.getText().equals("OTP 인증완료")){
-                    if(!checkbox1.getState()){
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
                         if(label3.getText().equals("null")){
                             AddData addData = new AddData(btn3,label3);
                             addData.setVisible(true);
@@ -372,8 +370,8 @@ public class Main extends javax.swing.JFrame {
         btn4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(otpButton.getText().equals("OTP 인증완료")){
-                    if(!checkbox1.getState()){
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
                         if(label4.getText().equals("null")){
                             AddData addData = new AddData(btn4,label4);
                             addData.setVisible(true);
@@ -401,8 +399,8 @@ public class Main extends javax.swing.JFrame {
         btn5.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(otpButton.getText().equals("OTP 인증완료")){
-                    if(!checkbox1.getState()){
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
                         if(label5.getText().equals("null")){
                             AddData addData = new AddData(btn5,label5);
                             addData.setVisible(true);
@@ -430,8 +428,8 @@ public class Main extends javax.swing.JFrame {
         btn6.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(otpButton.getText().equals("OTP 인증완료")){
-                    if(!checkbox1.getState()){
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
                         if(label6.getText().equals("null")){
                             AddData addData = new AddData(btn6,label6);
                             addData.setVisible(true);
@@ -459,8 +457,8 @@ public class Main extends javax.swing.JFrame {
         btn7.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(otpButton.getText().equals("OTP 인증완료")){
-                    if(!checkbox1.getState()){
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
                         if(label7.getText().equals("null")){
                             AddData addData = new AddData(btn7,label7);
                             addData.setVisible(true);
@@ -488,8 +486,8 @@ public class Main extends javax.swing.JFrame {
         btn8.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(otpButton.getText().equals("OTP 인증완료")){
-                    if(!checkbox1.getState()){
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
                         if(label8.getText().equals("null")){
                             AddData addData = new AddData(btn8,label8);
                             addData.setVisible(true);
@@ -517,8 +515,8 @@ public class Main extends javax.swing.JFrame {
         btn9.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(otpButton.getText().equals("OTP 인증완료")){
-                    if(!checkbox1.getState()){
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
                         if(label9.getText().equals("null")){
                             AddData addData = new AddData(btn9,label9);
                             addData.setVisible(true);
@@ -546,8 +544,8 @@ public class Main extends javax.swing.JFrame {
         btn10.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(otpButton.getText().equals("OTP 인증완료")){
-                    if(!checkbox1.getState()){
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
                         if(label10.getText().equals("null")){
                             AddData addData = new AddData(btn10,label10);
                             addData.setVisible(true);
@@ -575,8 +573,8 @@ public class Main extends javax.swing.JFrame {
         btn11.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(otpButton.getText().equals("OTP 인증완료")){
-                    if(!checkbox1.getState()){
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
                         if(label11.getText().equals("null")){
                             AddData addData = new AddData(btn11,label11);
                             addData.setVisible(true);
@@ -604,8 +602,8 @@ public class Main extends javax.swing.JFrame {
         btn12.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(otpButton.getText().equals("OTP 인증완료")){
-                    if(!checkbox1.getState()){
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
                         if(label12.getText().equals("null")){
                             AddData addData = new AddData(btn12,label12);
                             addData.setVisible(true);
@@ -633,8 +631,8 @@ public class Main extends javax.swing.JFrame {
         btn13.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(otpButton.getText().equals("OTP 인증완료")){
-                    if(!checkbox1.getState()){
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
                         if(label13.getText().equals("null")){
                             AddData addData = new AddData(btn13,label13);
                             addData.setVisible(true);
@@ -662,8 +660,8 @@ public class Main extends javax.swing.JFrame {
         btn14.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(otpButton.getText().equals("OTP 인증완료")){
-                    if(!checkbox1.getState()){
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
                         if(label14.getText().equals("null")){
                             AddData addData = new AddData(btn14,label14);
                             addData.setVisible(true);
@@ -691,8 +689,8 @@ public class Main extends javax.swing.JFrame {
         btn15.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(otpButton.getText().equals("OTP 인증완료")){
-                    if(!checkbox1.getState()){
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
                         if(label15.getText().equals("null")){
                             AddData addData = new AddData(btn15,label15);
                             addData.setVisible(true);
@@ -718,40 +716,33 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        randomPWButton.addActionListener(new ActionListener() {
+        randomPWBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                randomPWButtonActionPerformed(e);
+                randomPWBtnActionPerformed(e);
             }
         });
-        otpButton.addActionListener(new ActionListener() {
+        otpBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                otpButtonActionPerformed(e);
+                otpBtnActionPerformed(e);
             }
         });
     }
-    private void otpButtonActionPerformed(ActionEvent evt) {
+    private void otpBtnActionPerformed(ActionEvent evt) {
         OTP otp = new OTP(this);
         otp.setVisible(true);
     }
-    private void randomPWButtonActionPerformed(ActionEvent evt) {
+    private void randomPWBtnActionPerformed(ActionEvent evt) {
         GeneratePassword generatePassword = new GeneratePassword();
         generatePassword.setVisible(true);
     }
     public void updateOTPButton() {
-        otpButton.setText("OTP 인증완료");
-        otpButton.setEnabled(false);
+        otpBtn.setText("OTP 인증완료");
+        otpBtn.setEnabled(false);
     }
 
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Main().setVisible(true);
-            }
-        });
-    }
 
-    private JPanel jPanel1;
+    private JPanel jPanel;
     private JButton btn1;
     private JButton btn2;
     private JButton btn3;
@@ -782,8 +773,8 @@ public class Main extends javax.swing.JFrame {
     private JLabel label13;
     private JLabel label14;
     private JLabel label15;
-    private JButton otpButton;
+    private JButton otpBtn;
     private JLabel mainTitle;
-    private JButton randomPWButton;
-    private Checkbox checkbox1;
+    private JButton randomPWBtn;
+    private Checkbox showCheck;
 }

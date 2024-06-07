@@ -9,7 +9,6 @@ import java.util.Random;
 import javax.swing.*;
 
 public class OTP extends JFrame {
-    private Main mainFrame;
     public OTP(Main mainFrame) {
         setLocationRelativeTo(null);
         initComponents();
@@ -20,58 +19,58 @@ public class OTP extends JFrame {
     @SuppressWarnings("unchecked")
     private void initComponents() {
 
-        jPanel1 = new JPanel();
-        checkbox1 = new Checkbox();
-        jLabel1 = new JLabel();
-        jTextField1 = new JTextField();
-        jButton1 = new JButton();
+        jPanel = new JPanel();
+        decodeOTP = new Checkbox();
+        otpText = new JLabel();
+        otpInput = new JTextField();
+        verifyBtn = new JButton();
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
-        checkbox1.setLabel("encode");
+        decodeOTP.setLabel("decode");
 
-        jLabel1.setBackground(new Color(122, 232, 241));
-        jLabel1.setFont(new Font("맑은 고딕", Font.BOLD, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(SwingConstants.CENTER);
-        jLabel1.setText("");
-        jLabel1.setOpaque(true);
+        otpText.setBackground(new Color(122, 232, 241));
+        otpText.setFont(new Font("맑은 고딕", Font.BOLD, 18)); // NOI18N
+        otpText.setHorizontalAlignment(SwingConstants.CENTER);
+        otpText.setText("");
+        otpText.setOpaque(true);
 
-        jTextField1.setFont(new Font("맑은 고딕", Font.PLAIN, 18)); // NOI18N
-        jTextField1.setHorizontalAlignment(JTextField.CENTER);
-        jTextField1.setText("");
+        otpInput.setFont(new Font("맑은 고딕", Font.PLAIN, 18)); // NOI18N
+        otpInput.setHorizontalAlignment(JTextField.CENTER);
+        otpInput.setText("");
 
-        jButton1.setText("인증하기");
+        verifyBtn.setText("인증하기");
 
-        GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
+        GroupLayout jPanelLayout = new GroupLayout(jPanel);
+        jPanel.setLayout(jPanelLayout);
+        jPanelLayout.setHorizontalGroup(
+                jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelLayout.createSequentialGroup()
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanelLayout.createSequentialGroup()
                                                 .addGap(31, 31, 31)
-                                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(jTextField1, GroupLayout.PREFERRED_SIZE, 278, GroupLayout.PREFERRED_SIZE)
-                                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                .addComponent(checkbox1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(otpInput, GroupLayout.PREFERRED_SIZE, 278, GroupLayout.PREFERRED_SIZE)
+                                                        .addGroup(jPanelLayout.createSequentialGroup()
+                                                                .addComponent(decodeOTP, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 216, GroupLayout.PREFERRED_SIZE))))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                                .addComponent(otpText, GroupLayout.PREFERRED_SIZE, 216, GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(jPanelLayout.createSequentialGroup()
                                                 .addGap(140, 140, 140)
-                                                .addComponent(jButton1)))
+                                                .addComponent(verifyBtn)))
                                 .addContainerGap(39, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanelLayout.setVerticalGroup(
+                jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelLayout.createSequentialGroup()
                                 .addGap(35, 35, 35)
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(checkbox1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(otpText, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(decodeOTP, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(53, 53, 53)
-                                .addComponent(jTextField1, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(otpInput, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE)
                                 .addGap(42, 42, 42)
-                                .addComponent(jButton1)
+                                .addComponent(verifyBtn)
                                 .addContainerGap(51, Short.MAX_VALUE))
         );
 
@@ -79,39 +78,39 @@ public class OTP extends JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
-        jButton1.addActionListener(new ActionListener() {
+        verifyBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 verifyInput();
 
             }
         });
-        checkbox1.addItemListener(new ItemListener() {
+        decodeOTP.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
                 if(e.getStateChange() == ItemEvent.SELECTED) {
-                    jLabel1.setText(formatNumber(decodeNumber(jLabel1.getText())));
+                    otpText.setText(formatNumber(decodeNumber(otpText.getText())));
                 }
                 else{
-                    jLabel1.setText(formatNumber(encodeNumber(generateRandomNumber())));
+                    otpText.setText(formatNumber(encodeNumber(generateRandomNumber())));
                 }
             }
         });
     }
     private void initAction() {
-        if (checkbox1.getState()) {
+        if (decodeOTP.getState()) {
             String randomNumbers = generateRandomNumber();
-            jLabel1.setText(formatNumber(randomNumbers));
+            otpText.setText(formatNumber(randomNumbers));
         } else {
             String randomNumbers = generateRandomNumber();
             String encodedNumbers = encodeNumber(randomNumbers);
-            jLabel1.setText(formatNumber(encodedNumbers));
+            otpText.setText(formatNumber(encodedNumbers));
         }
     }
 
@@ -147,10 +146,10 @@ public class OTP extends JFrame {
         return encoded.toString();
     }
     private void verifyInput() {
-        String input = jTextField1.getText().replace(" ", "");
-        String labelValue = jLabel1.getText().replace(" ", ""); // 공백 제거
+        String input = otpInput.getText().replace(" ", "");
+        String labelValue = otpText.getText().replace(" ", ""); // 공백 제거
 
-        if (!input.equals(labelValue) || !checkbox1.getState()) {
+        if (!input.equals(labelValue) || !decodeOTP.getState()) {
             JOptionPane.showMessageDialog(this, "인증에 실패하였습니다.", "인증 실패", JOptionPane.ERROR_MESSAGE);
             initAction();
         }
@@ -170,31 +169,11 @@ public class OTP extends JFrame {
         }
         return decoded.toString();
     }
-    public static void main(String args[]) {
 
-        try {
-            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(OTP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(OTP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(OTP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(OTP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-
-
-    }
-
-    private JPanel jPanel1;
-    private JButton jButton1;
-    private JLabel jLabel1;
-    private JTextField jTextField1;
-    private Checkbox checkbox1;
+    private Main mainFrame;
+    private JPanel jPanel;
+    private JButton verifyBtn;
+    private JLabel otpText;
+    private JTextField otpInput;
+    private Checkbox decodeOTP;
 }

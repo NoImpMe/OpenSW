@@ -1,0 +1,2 @@
+admin,admin,admin,admin,0,admin
+이름,생년월일,아이디,비번,0,답변
