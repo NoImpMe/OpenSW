@@ -1,0 +1,42 @@
+@startuml
+
+actor 사용자
+
+participant "Main 창" as Main
+participant "AddData 창" as AddData
+participant "OTP 인증 서비스" as OTPService
+participant "경고 창" as Warning
+
+사용자 -> Main : + 버튼 클릭
+activate Main
+
+Main -> OTPService : OTP 인증 요청
+activate OTPService
+OTPService -> Main : 인증 성공
+deactivate OTPService
+
+Main -> AddData : + 버튼 클릭
+activate AddData
+deactivate Main
+사용자 -> AddData : 사이트 이름 입력
+사용자 -> AddData : 추가 버튼 클릭
+
+alt 사이트 이름이 올바른 경우
+
+    AddData -> Main : 사이트 이름으로 버튼 변경
+    activate Main
+    deactivate AddData
+    deactivate Main
+else 사이트 이름이 올바르지 않은 경우
+    AddData -> Warning : 경고 창 표시
+    activate AddData
+    activate Warning
+    Warning -> 사용자 : 오류 메시지 표시
+    deactivate Warning
+    deactivate AddData
+
+end
+
+deactivate Main
+
+@enduml

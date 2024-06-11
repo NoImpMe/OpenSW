@@ -1,0 +1,35 @@
+@startuml
+
+actor 사용자
+
+participant "로그인 창" as Login
+participant "인증 서비스" as Auth
+participant "경고 창" as Warning
+participant "Main 창" as Main
+
+사용자 -> Login : 프로그램 실행
+activate Login
+
+사용자 -> Login : 계정 입력
+Login -> Auth : Login 버튼 클릭
+activate Auth
+
+alt 자격 증명이 올바른 경우
+    Auth -> Login : 성공
+    deactivate Auth
+    Login -> Main : 메인 창 열기
+    activate Main
+    deactivate Main
+else 자격 증명이 틀린 경우
+    Auth -> Login : 실패
+    activate Auth
+    deactivate Auth
+    Login -> Warning : 경고 창 표시
+    activate Warning
+    deactivate Login
+    Warning -> 사용자 : 오류 메시지 표시
+    deactivate Warning
+    deactivate Login
+end
+
+@enduml
