@@ -1,11 +1,32 @@
 @startuml
-'https://plantuml.com/sequence-diagram
 
-autonumber
+actor 사용자
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+participant "로그인 창" as Login
+participant "PW 찾기 창" as FindPasswd
+participant "Account.txt" as AccountService
+participant "경고 창" as Warning
+activate Login
+사용자 -> Login : 프로그램 실행
+Login -> FindPasswd : Password 찾기 버튼 클릭
+deactivate Login
+activate FindPasswd
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+사용자 -> FindPasswd : ID와 질문에 대한 답변 입력
+사용자 -> FindPasswd : PW 검색 버튼 클릭
+
+alt 정보가 올바른 경우
+    FindPasswd -> AccountService : PW 찾기 요청 (ID, 질문에 대한 답변)
+    activate AccountService
+    AccountService -> FindPasswd : PW 반환
+    deactivate AccountService
+    FindPasswd -> 사용자 : PW 표시
+else 정보가 올바르지 않은 경우
+    FindPasswd -> Warning : 경고 창 표시
+    activate Warning
+    Warning -> 사용자 : 오류 메시지 표시
+    deactivate Warning
+    deactivate FindPasswd
+end
+
 @enduml

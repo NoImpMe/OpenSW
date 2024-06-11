@@ -1,11 +1,33 @@
 @startuml
-'https://plantuml.com/sequence-diagram
 
-autonumber
+actor 사용자
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+participant "Main 창" as Main
+participant "SaveAccount 창" as SaveAccount
+participant "AESUtil" as EncryptionService
+participant "Data.txt" as FileSystem
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+사용자 -> Main : AddData가 완료된 버튼 클릭
+activate Main
+
+Main -> SaveAccount : SaveAccount 창 열기
+deactivate Main
+activate SaveAccount
+
+사용자 -> SaveAccount : 계정 정보 입력 (ID, Password)
+사용자 -> SaveAccount : 저장 버튼 클릭
+
+SaveAccount -> EncryptionService : 계정 정보 암호화 요청 (ID, Password)
+
+activate EncryptionService
+deactivate EncryptionService
+
+SaveAccount -> FileSystem : 암호화된 계정 정보 저장
+activate FileSystem
+FileSystem -> SaveAccount : 저장 완료
+deactivate FileSystem
+
+deactivate SaveAccount
+deactivate Main
+
 @enduml

@@ -1,11 +1,64 @@
 @startuml
-'https://plantuml.com/sequence-diagram
 
-autonumber
+actor 사용자
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+participant "메인 창" as Main
+participant "OTP 창" as OTP
+participant "OTP 서비스" as OTPService
+participant "경고 창" as Warning
+activate Main
+사용자 -> Main : 로그인 성공
+Main -> OTP : OTP 버튼 클릭
+deactivate Main
+activate OTP
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+OTP -> 사용자 : 영문자 표시
+사용자 -> OTP : decode 체크박스 체크
+OTP -> OTP : 영문자 숫자로 변환
+OTP -> 사용자 : 변환된 숫자 출력
+사용자 -> OTP : 변환된 숫자 입력
+사용자 -> OTP : OTP 인증 버튼 클릭
+alt 입력된 숫자가 올바른 경우
+    OTP -> OTPService : OTP 인증 요청 (변환된 숫자)
+    activate OTPService
+    OTPService -> OTP : 인증 성공
+    deactivate OTPService
+    activate Main
+    OTP -> Main : OTP 인증완료로 변경
+    deactivate Main
+else 입력된 숫자가 올바르지 않은 경우
+    OTP -> Warning : 경고 창 표시
+    deactivate OTP
+    activate Warning
+    Warning -> 사용자 : 오류 메시지 표시
+    deactivate Warning
+    loop 사용자가 올바른 숫자를 입력할 때까지
+
+        activate OTP
+        OTP -> OTP : 새로운 영문자 숫자로 변환
+        OTP -> 사용자 : 변환된 숫자 출력
+        사용자 -> OTP : 변환된 숫자 입력
+        사용자 -> OTP : OTP 인증 버튼 클릭
+        alt 입력된 숫자가 올바른 경우
+            OTP -> OTPService : OTP 인증 요청 (변환된 숫자)
+            activate OTPService
+            OTPService -> OTP : 인증 성공
+            deactivate OTPService
+            activate Main
+            OTP -> Main : OTP 인증완료로 변경
+            deactivate Main
+        else 입력된 숫자가 올바르지 않은 경우
+            OTP -> Warning : 경고 창 표시
+            deactivate OTP
+            activate Warning
+            Warning -> 사용자 : 오류 메시지 표시
+            deactivate Warning
+            activate OTP
+            OTP -> OTP : 새로운 영문자 숫자로 변환
+            OTP -> 사용자 : 변환된 숫자 출력
+            deactivate OTP
+        end
+    end
+end
+
 @enduml

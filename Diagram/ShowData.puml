@@ -1,11 +1,32 @@
 @startuml
-'https://plantuml.com/sequence-diagram
 
-autonumber
+actor 사용자
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+participant "Main 창" as Main
+participant "ShowData 창" as ShowData
+participant "암호화 서비스" as EncryptionService
+participant "Data.txt" as FileSystem
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+사용자 -> Main : show Data 체크박스 활성화
+activate Main
+
+사용자 -> Main : 계정 정보가 저장된 버튼 클릭
+Main -> ShowData : ShowData 창 열기
+deactivate Main
+activate ShowData
+
+ShowData -> FileSystem : 암호화된 계정 정보 읽기
+activate FileSystem
+FileSystem -> ShowData : 암호화된 계정 정보 반환
+deactivate FileSystem
+
+ShowData -> EncryptionService : 계정 정보 복호화 요청
+activate EncryptionService
+EncryptionService -> ShowData : 복호화된 계정 정보 반환
+deactivate EncryptionService
+
+ShowData -> 사용자 : 복호화된 계정 정보 표시
+deactivate ShowData
+deactivate Main
+
 @enduml

@@ -1,11 +1,28 @@
 @startuml
-'https://plantuml.com/sequence-diagram
 
-autonumber
+actor 사용자
+participant "메인 창" as Main
+participant "비밀번호 생성 창" as GeneratePassword
+participant "비밀번호 생성기" as PasswordGenerator
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+activate Main
+사용자 -> Main : 로그인 성공
+Main -> GeneratePassword : Random PW 생성 버튼 클릭
+deactivate Main
+activate GeneratePassword
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+사용자 -> GeneratePassword : 옵션 선택 (연속된 숫자 허용, 대문자 필요, 특수문자 필요)
+사용자 -> GeneratePassword : 길이 선택 (8~10, 11~13, 13~15)
+사용자 -> GeneratePassword : 생성 버튼 클릭
+
+GeneratePassword -> PasswordGenerator : 비밀번호 생성 요청 (선택된 옵션과 길이)
+activate PasswordGenerator
+PasswordGenerator -> GeneratePassword : 생성된 비밀번호 반환
+deactivate PasswordGenerator
+
+GeneratePassword -> 사용자 : 생성된 비밀번호 표시
+사용자 -> GeneratePassword : 복사 버튼 클릭
+GeneratePassword -> 사용자 : 비밀번호 클립보드에 복사
+deactivate GeneratePassword
+
 @enduml
