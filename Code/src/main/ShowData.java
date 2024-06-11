@@ -1,37 +1,43 @@
 package main;
 
-public class ShowData extends javax.swing.JFrame {
+import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
-    public ShowData() {
+public class ShowData extends JFrame {
+
+    public ShowData(JLabel data) throws Exception {
+        setLocationRelativeTo(null);
+        this.data = data;
         initComponents();
     }
 
     @SuppressWarnings("unchecked")
-    private void initComponents() {
+    private void initComponents() throws Exception {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        dataName = new JLabel();
+        dataText = new JLabel();
+        idText = new JLabel();
+        pwText = new JLabel();
+        idData = new JLabel();
+        pwData = new JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("맑은 고딕", 1, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Data");
+        dataName.setFont(new java.awt.Font("맑은 고딕", 1, 14)); // NOI18N
+        dataName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        dataName.setText(data.getText());
 
-        jLabel2.setFont(new java.awt.Font("맑은 고딕", 1, 14)); // NOI18N
-        jLabel2.setText("의 정보입니다.");
+        dataText.setFont(new java.awt.Font("맑은 고딕", 1, 14)); // NOI18N
+        dataText.setText("의 정보입니다.");
 
-        jLabel3.setText("ID");
+        idText.setText("ID");
 
-        jLabel4.setText("Password");
+        pwText.setText("Password");
 
-        jLabel5.setText("gildong");
+        idData.setText("");
 
-        jLabel6.setText("asdsdw@31");
+        pwData.setText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -41,22 +47,22 @@ public class ShowData extends javax.swing.JFrame {
                                 .addGap(60, 60, 60)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel4)
+                                                .addComponent(pwText)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(pwData, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(dataName, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(jLabel3)
+                                                                .addComponent(idText)
                                                                 .addGap(12, 12, 12)))
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addGroup(layout.createSequentialGroup()
                                                                 .addGap(18, 18, 18)
-                                                                .addComponent(jLabel2))
+                                                                .addComponent(dataText))
                                                         .addGroup(layout.createSequentialGroup()
                                                                 .addGap(26, 26, 26)
-                                                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                                                .addComponent(idData, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                 .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -64,51 +70,44 @@ public class ShowData extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel1)
-                                        .addComponent(jLabel2))
+                                        .addComponent(dataName)
+                                        .addComponent(dataText))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel3)
-                                        .addComponent(jLabel5))
+                                        .addComponent(idText)
+                                        .addComponent(idData))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel4)
-                                        .addComponent(jLabel6))
+                                        .addComponent(pwText)
+                                        .addComponent(pwData))
                                 .addContainerGap(35, Short.MAX_VALUE))
         );
-
+        loadAndDisplayData();
         pack();
     }
 
-    public static void main(String args[]) {
-
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+    public void loadAndDisplayData() throws Exception {
+        String encryptionKey = "1234567890123456"; // 16자리 키
+        BufferedReader reader = new BufferedReader(new FileReader("Code/src/main/Data.txt"));
+        String line;
+        while ((line = reader.readLine()) != null) {
+            String[] parts = line.split(",");
+            if (parts[0].equals(data.getText())) {
+                String encryptedId = parts[1];
+                String encryptedPassword = parts[2];
+                String decryptedId = AESUtil.decrypt(encryptedId, encryptionKey);
+                String decryptedPassword = AESUtil.decrypt(encryptedPassword, encryptionKey);
+                idData.setText(decryptedId);
+                pwData.setText(decryptedPassword);
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ShowData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ShowData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ShowData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ShowData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ShowData().setVisible(true);
-            }
-        });
     }
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+
+    private JLabel data;
+    private JLabel dataName;
+    private JLabel dataText;
+    private JLabel idText;
+    private JLabel pwText;
+    private JLabel idData;
+    private JLabel pwData;
 }

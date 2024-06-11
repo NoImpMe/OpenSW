@@ -1,117 +1,118 @@
-package Code.src.main;
+package main;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
-import java.util.Scanner;
 
 public class FindID extends JFrame {
-    private JTextField jTextField2;
-    private JTextField jTextField3;
-    private JButton jButton1;
-    private JPanel jPanel1;
-    private JLabel jLabel2;
-    private JLabel jLabel3;
-    private JLabel jLabel4;
-    private JLabel jLabel5;
+    private JTextField birthInput;
+    private JTextField nameInput;
+    private JButton searchBtn;
+    private JPanel jPanel;
+    private JLabel birth;
+    private JLabel name;
+    private JLabel idLabel;
+    private JLabel searchedID;
 
     public FindID() {
+        setTitle("Find ID");
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null);
         initComponents();
     }
 
     @SuppressWarnings("unchecked")
     private void initComponents() {
-        jPanel1 = new JPanel();
-        jLabel2 = new JLabel();
-        jLabel3 = new JLabel();
-        jTextField2 = new JTextField();
-        jTextField3 = new JTextField();
-        jLabel4 = new JLabel();
-        jButton1 = new JButton();
-        jLabel5 = new JLabel();
+        jPanel = new JPanel();
+        birth = new JLabel();
+        name = new JLabel();
+        searchedID = new JLabel();
+        idLabel = new JLabel();
+        birthInput = new JTextField();
+        nameInput = new JTextField();
+        searchBtn = new JButton();
 
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        birth.setFont(new Font("맑은 고딕", Font.BOLD, 12));
+        birth.setHorizontalAlignment(SwingConstants.CENTER);
+        birth.setText("생년월일");
 
-        jLabel2.setFont(new Font("맑은 고딕", Font.BOLD, 12));
-        jLabel2.setHorizontalAlignment(SwingConstants.CENTER);
-        jLabel2.setText("생년월일");
+        name.setFont(new Font("맑은 고딕", Font.BOLD, 12));
+        name.setHorizontalAlignment(SwingConstants.CENTER);
+        name.setText("    이름  ");
 
-        jLabel3.setFont(new Font("맑은 고딕", Font.BOLD, 12));
-        jLabel3.setHorizontalAlignment(SwingConstants.CENTER);
-        jLabel3.setText("    이름  ");
+        birthInput.setText("");
 
-        jTextField2.setText("");
+        nameInput.setText("");
 
-        jTextField3.setText("");
+        idLabel.setFont(new Font("맑은 고딕", Font.BOLD, 12));
+        idLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        idLabel.setText("검색된 ID");
 
-        jLabel4.setFont(new Font("맑은 고딕", Font.BOLD, 12));
-        jLabel4.setHorizontalAlignment(SwingConstants.CENTER);
-        jLabel4.setText("검색된 ID");
-
-        jButton1.setText("ID 검색");
-        jButton1.addActionListener(new ActionListener() {
+        searchBtn.setText("ID 검색");
+        searchBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String idToSearch = jTextField2.getText().trim();
-                String birthdayToSearch = jTextField3.getText().trim();
+                String birthdayToSearch = birthInput.getText().trim();
+                String nameToSearch = nameInput.getText().trim();
                 String foundId = null;
                 try {
-                    foundId = searchAccount(idToSearch, birthdayToSearch);
+                    foundId = searchAccount(birthdayToSearch, nameToSearch);
                 } catch (FileNotFoundException ex) {
                     throw new RuntimeException(ex);
                 }
-                jLabel5.setText(foundId);
+                searchedID.setText(foundId);
             }
         });
-        jLabel5.setText("");
+        searchedID.setText("");
 
-        GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
+        GroupLayout jPanelLayout = new GroupLayout(jPanel);
+        jPanel.setLayout(jPanelLayout);
+        jPanelLayout.setHorizontalGroup(
+                jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelLayout.createSequentialGroup()
                                 .addGap(26, 26, 26)
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel4)
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                        .addGroup(jPanelLayout.createSequentialGroup()
+                                                .addComponent(idLabel)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(jLabel5, GroupLayout.PREFERRED_SIZE, 160, GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                        .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                                                .addComponent(jLabel2))
+                                                .addComponent(searchedID, GroupLayout.PREFERRED_SIZE, 160, GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                .addGroup(jPanelLayout.createSequentialGroup()
+                                                        .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                .addComponent(birth))
                                                         .addGap(18, 18, 18)
-                                                        .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                                                .addComponent(jTextField2, GroupLayout.PREFERRED_SIZE, 160, GroupLayout.PREFERRED_SIZE)))
-                                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                                        .addComponent(jLabel3)
+                                                        .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                .addComponent(birthInput, GroupLayout.PREFERRED_SIZE, 160, GroupLayout.PREFERRED_SIZE)))
+                                                .addGroup(jPanelLayout.createSequentialGroup()
+                                                        .addComponent(name)
                                                         .addGap(18, 18, 18)
-                                                        .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                                                .addComponent(jButton1)
-                                                                .addComponent(jTextField3, GroupLayout.PREFERRED_SIZE, 160, GroupLayout.PREFERRED_SIZE)))))
+                                                        .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                .addComponent(searchBtn)
+                                                                .addComponent(nameInput, GroupLayout.PREFERRED_SIZE, 160, GroupLayout.PREFERRED_SIZE)))))
                                 .addContainerGap(18, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanelLayout.setVerticalGroup(
+                jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelLayout.createSequentialGroup()
                                 .addGap(21, 21, 21)
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE))
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE))
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jTextField2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(birth)
+                                        .addComponent(birthInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                                 .addGap(9, 9, 9)
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jTextField3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel3))
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(nameInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(name))
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                                .addComponent(jButton1)
+                                .addComponent(searchBtn)
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel4)
-                                        .addComponent(jLabel5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(idLabel)
+                                        .addComponent(searchedID, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                                 .addGap(25, 25, 25))
         );
 
@@ -119,23 +120,22 @@ public class FindID extends JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }
-    private String searchAccount(String idToSearch, String birthdayToSearch) throws FileNotFoundException {
+    private String searchAccount(String birthdayToSearch, String nameToSearch) throws FileNotFoundException {
         String foundId = "";
         try (BufferedReader reader = new BufferedReader(new FileReader("Code/src/main/account.txt"))) {
             String line;
-            boolean idFound = false;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts[1].equals(jTextField2.getText()) && parts[0].equals(jTextField3.getText())) {
+                if (parts[1].equals(birthdayToSearch) && parts[0].equals(nameToSearch)) {
                     foundId = parts[2];
                 } else {
                     JOptionPane.showMessageDialog(FindID.this, "입력한 정보에 맞는 ID가 없습니다.");
@@ -148,17 +148,4 @@ public class FindID extends JFrame {
         }
     }
 
-        public static void main(String args[]) {
-        try {
-            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FindID.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        java.awt.EventQueue.invokeLater(() -> new FindID().setVisible(true));
-    }
 }

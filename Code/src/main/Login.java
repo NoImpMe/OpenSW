@@ -3,18 +3,17 @@ package main;
 import javax.swing.*;
 import java.awt.event.*;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 public class Login extends JFrame {
-    private JButton jButton1;
-    private JButton jButton2;
-    private JButton jButton3;
-    private JButton jButton4;
-    private JFormattedTextField jFormattedTextField1;
-    private JLabel jLabel1;
-    private JPanel jPanel1;
-    private JPasswordField jPasswordField1;
+    private JPanel jPanel;
+    private JLabel title;
+    private JButton startBtn;
+    private JButton registBtn;
+    private JButton findIDBtn;
+    private JButton findPWBtn;
+    private JPasswordField pwField;
+    private JFormattedTextField idField;
 
     public Login() {
         setLocationRelativeTo(null);
@@ -23,78 +22,74 @@ public class Login extends JFrame {
 
     @SuppressWarnings("unchecked")
     private void initComponents() {
-        jPanel1 = new JPanel();
-        jButton1 = new JButton();
-        jFormattedTextField1 = new JFormattedTextField();
-        jPasswordField1 = new JPasswordField();
-        jButton2 = new JButton();
-        jLabel1 = new JLabel();
-        jButton3 = new JButton();
-        jButton4 = new JButton();
 
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        jButton1.setText("Login");
+        jPanel = new JPanel();
+        startBtn = new JButton();
+        idField = new JFormattedTextField();
+        pwField = new JPasswordField();
+        registBtn = new JButton();
+        title = new JLabel();
+        findIDBtn = new JButton();
+        findPWBtn = new JButton();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        startBtn.setText("Login");
 
-        jFormattedTextField1.setText("ID");
-        jFormattedTextField1.setFont(new java.awt.Font("맑은 고딕", 1, 18));
+        idField.setText("");
+        idField.setFont(new java.awt.Font("맑은 고딕", 1, 18));
 
-        jPasswordField1.setText("jPasswordField1");
-        jButton2.setText("Register");
-        jButton2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jLabel1.setFont(new java.awt.Font("맑은 고딕", 1, 36));
-        jLabel1.setHorizontalAlignment(SwingConstants.CENTER);
-        jLabel1.setText("Safe Local Lock");
+        pwField.setText("");
+        registBtn.setText("Register");
 
-        jButton3.setText("ID 찾기");
+        title.setFont(new java.awt.Font("맑은 고딕", 1, 36));
+        title.setHorizontalAlignment(SwingConstants.CENTER);
+        title.setText("Safe Local Lock");
 
-        jButton4.setText("Password 찾기");
+        findIDBtn.setText("ID 찾기");
 
-        GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
+        findPWBtn.setText("Password 찾기");
+
+        GroupLayout jPanelLayout = new GroupLayout(jPanel);
+        jPanel.setLayout(jPanelLayout);
+        jPanelLayout.setHorizontalGroup(
+                jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelLayout.createSequentialGroup()
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanelLayout.createSequentialGroup()
                                                 .addGap(187, 187, 187)
-                                                .addComponent(jButton3)
+                                                .addComponent(findIDBtn)
                                                 .addGap(93, 93, 93)
-                                                .addComponent(jButton4))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(findPWBtn))
+                                        .addGroup(jPanelLayout.createSequentialGroup()
                                                 .addGap(178, 178, 178)
-                                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                                                        .addComponent(jFormattedTextField1)
-                                                                        .addComponent(jPasswordField1, GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE))
+                                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                        .addGroup(jPanelLayout.createSequentialGroup()
+                                                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                                                        .addComponent(idField)
+                                                                        .addComponent(pwField, GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE))
                                                                 .addGap(56, 56, 56)
-                                                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                                                        .addComponent(jButton2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                        .addComponent(jButton1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                                        .addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 290, GroupLayout.PREFERRED_SIZE))))
+                                                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                                                        .addComponent(registBtn, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                        .addComponent(startBtn, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                                        .addComponent(title, GroupLayout.PREFERRED_SIZE, 290, GroupLayout.PREFERRED_SIZE))))
                                 .addContainerGap(163, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanelLayout.setVerticalGroup(
+                jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelLayout.createSequentialGroup()
                                 .addGap(35, 35, 35)
-                                .addComponent(jLabel1, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(title, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE)
                                 .addGap(32, 32, 32)
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jFormattedTextField1, GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
-                                        .addComponent(jButton1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(idField, GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                                        .addComponent(startBtn, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jPasswordField1, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButton2, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(pwField, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(registBtn, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE))
                                 .addGap(66, 66, 66)
-                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jButton3)
-                                        .addComponent(jButton4))
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(findIDBtn)
+                                        .addComponent(findPWBtn))
                                 .addContainerGap(93, Short.MAX_VALUE))
         );
 
@@ -102,19 +97,19 @@ public class Login extends JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
-        jButton1.addActionListener(new ActionListener() {
+        startBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 try {
-                    String id = jFormattedTextField1.getText();
-                    String password = new String(jPasswordField1.getPassword());
+                    String id = idField.getText();
+                    String password = new String(pwField.getPassword());
                     BufferedReader reader = new BufferedReader(new FileReader("Code/src/main/account.txt"));
                     String line;
                     boolean idFound = false;
@@ -137,8 +132,9 @@ public class Login extends JFrame {
                     } else if (!passwordMatched) {
                         JOptionPane.showMessageDialog(Login.this, "비밀번호가 틀렸습니다.");
                     } else {
-                        main.Main main = new main.Main();
+                        Main main = new Main();
                         main.setVisible(true);
+                        dispose();
                     }
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(Login.this, "파일을 읽어오는 중 오류가 발생했습니다.");
@@ -147,15 +143,34 @@ public class Login extends JFrame {
                 }
             }
         });
+        registBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                registBtnActionPerformed(evt);
+            }
+        });
+        findIDBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                findIDBtnActionPerformed(evt);
+            }
+        });
+        findPWBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                findPWBtnActionPerformed(evt);
+            }
+        });
     }
-
-    private void jButton2ActionPerformed(ActionEvent evt) {
-        main.Register register = new main.Register();
+    private void registBtnActionPerformed(ActionEvent evt) {
+        Register register = new Register();
         register.setVisible(true);
     }
-
-    private void jPasswordField1ActionPerformed(ActionEvent evt) {
-        // TODO add your handling code here:
+    private void findIDBtnActionPerformed(ActionEvent evt) {
+        FindID findID = new FindID();
+        findID.setVisible(true);
+    }
+    private void findPWBtnActionPerformed(ActionEvent evt) {
+        FindPasswd findPasswd = new FindPasswd();
+        findPasswd.setVisible(true);
     }
 
     public static void main(String args[]) {

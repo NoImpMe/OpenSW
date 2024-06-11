@@ -1,147 +1,234 @@
 package main;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class GeneratePassword extends javax.swing.JFrame {
+public class GeneratePassword extends JFrame {
 
     public GeneratePassword() {
+        setLocationRelativeTo(null);
         initComponents();
     }
 
     @SuppressWarnings("unchecked")
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        jCheckBox6 = new javax.swing.JCheckBox();
-        jButton2 = new javax.swing.JButton();
+        explain = new JLabel();
+        continuity = new JCheckBox();
+        capitality = new JCheckBox();
+        specialChar = new JCheckBox();
+        eightToTen = new JCheckBox();
+        elevenToThr = new JCheckBox();
+        thirteenToFif = new JCheckBox();
+        createBtn = new JButton();
+        result = new JLabel();
+        copyBtn = new JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("맑은 고딕", 1, 18)); // NOI18N
-        jLabel1.setText("원하는 양식을 선택 후 생성 버튼을 눌러주세요.");
+        explain.setFont(new java.awt.Font("맑은 고딕", 1, 18)); // NOI18N
+        explain.setText("원하는 양식을 선택 후 생성 버튼을 눌러주세요.");
 
-        jCheckBox1.setText("연속된 숫자 허용");
+        continuity.setText("연속된 숫자 허용");
 
-        jCheckBox2.setText("대문자 필요");
+        capitality.setText("대문자 필요");
 
-        jCheckBox3.setText("특수문자 필요");
+        specialChar.setText("특수문자 필요");
 
-        jButton1.setText("생성");
+        createBtn.setText("생성");
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("맑은 고딕", 1, 18)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("A2#4s1@3");
-        jLabel2.setOpaque(true);
+        result.setBackground(new java.awt.Color(255, 255, 255));
+        result.setFont(new java.awt.Font("맑은 고딕", 1, 18)); // NOI18N
+        result.setHorizontalAlignment(SwingConstants.CENTER);
+        result.setText("");
+        result.setOpaque(true);
 
-        jCheckBox4.setText("8~10자리");
+        eightToTen.setText("8~10자리");
 
-        jCheckBox5.setText("13~15자리");
+        thirteenToFif.setText("13~15자리");
 
-        jCheckBox6.setText("11~13자리");
+        elevenToThr.setText("11~13자리");
 
-        jButton2.setText("복사");
+        copyBtn.setText("복사");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1)
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(createBtn)
                                 .addGap(176, 176, 176))
                         .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                 .addGroup(layout.createSequentialGroup()
                                                         .addGap(32, 32, 32)
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addComponent(jCheckBox1)
-                                                                .addComponent(jCheckBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                .addComponent(continuity)
+                                                                .addComponent(eightToTen, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE))
                                                         .addGap(18, 18, 18)
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                                .addComponent(jCheckBox2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                .addComponent(jCheckBox6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                                                .addComponent(capitality, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(elevenToThr, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                                         .addGap(18, 18, 18)
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addComponent(jCheckBox3)
-                                                                .addComponent(jCheckBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                .addComponent(specialChar)
+                                                                .addComponent(thirteenToFif, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)))
                                                 .addGroup(layout.createSequentialGroup()
                                                         .addGap(22, 22, 22)
-                                                        .addComponent(jLabel1)))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                        .addComponent(explain)))
+                                        .addGroup(GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                                 .addGap(54, 54, 54)
-                                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(result, GroupLayout.PREFERRED_SIZE, 231, GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(copyBtn, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)))
                                 .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addGap(17, 17, 17)
-                                .addComponent(jLabel1)
+                                .addComponent(explain)
                                 .addGap(35, 35, 35)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jCheckBox1)
-                                        .addComponent(jCheckBox2)
-                                        .addComponent(jCheckBox3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jCheckBox5)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(jCheckBox4)
-                                                .addComponent(jCheckBox6)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButton2))
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(continuity)
+                                        .addComponent(capitality)
+                                        .addComponent(specialChar))
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addComponent(thirteenToFif)
+                                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                .addComponent(eightToTen)
+                                                .addComponent(elevenToThr)))
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(result, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(copyBtn))
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(createBtn, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
                                 .addGap(16, 16, 16))
         );
 
         pack();
-    }
-    public static void main(String args[]) {
-
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+        createBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                createBtnActionPerformed(e);
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GeneratePassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GeneratePassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GeneratePassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GeneratePassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GeneratePassword().setVisible(true);
+        });
+        copyBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                copyBtnActionPerformed(e);
+            }
+        });
+        eightToTen.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                eightToTenActionPerformed(e);
+            }
+        });
+        thirteenToFif.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                thirteenToFifActionPerformed(e);
+            }
+        });
+        elevenToThr.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                elevenToThrActionPerformed(e);
             }
         });
     }
+    private String generatePassword() {
+        int passwordLength = 0;
 
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+        if (eightToTen.isSelected()) {
+            passwordLength = 8 + (int)(Math.random() * 3); // 8~10자리
+        } else if (elevenToThr.isSelected()) {
+            passwordLength = 11 + (int)(Math.random() * 3); // 11~13자리
+        } else if (thirteenToFif.isSelected()) {
+            passwordLength = 13 + (int)(Math.random() * 3); // 13~15자리
+        }
+
+        StringBuilder password = new StringBuilder();
+
+        boolean includeUpperCase = capitality.isSelected();
+
+        boolean includeSpecialChars = specialChar.isSelected();
+
+        for (int i = 0; i < passwordLength; i++) {
+            int category = (int)(Math.random() * 3);
+
+            if (category == 0) {
+                password.append((char)('0' + (int)(Math.random() * 10)));
+            } else if (category == 1) {
+                password.append((char)('a' + (int)(Math.random() * 26)));
+            } else {
+                if (includeUpperCase) {
+                    password.append((char)('A' + (int)(Math.random() * 26)));
+                } else {
+                    password.append((char)('a' + (int)(Math.random() * 26)));
+                }
+            }
+        }
+
+        if (includeSpecialChars) {
+            int index = (int)(Math.random() * password.length());
+            char specialChar = (char)(33 + (int)(Math.random() * 15)); // '!'부터 '~'까지
+            password.setCharAt(index, specialChar);
+        }
+
+        return password.toString();
+    }
+    private void copyToClipboard() {
+        // 클립보드에 복사할 텍스트
+        String password = result.getText();
+
+        // 클립보드에 텍스트 복사
+        StringSelection stringSelection = new StringSelection(password);
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(stringSelection, null);
+    }
+    private void createBtnActionPerformed(ActionEvent evt) {
+        // 비밀번호 생성 후 result에 출력
+        String password = generatePassword();
+        result.setText(password);
+    }
+    private void copyBtnActionPerformed(ActionEvent evt) {
+        copyToClipboard();
+    }
+    private void eightToTenActionPerformed(ActionEvent evt) {
+        if (eightToTen.isSelected()) {
+            thirteenToFif.setSelected(false);
+            elevenToThr.setSelected(false);
+        }
+    }
+
+    private void thirteenToFifActionPerformed(ActionEvent evt) {
+        if (thirteenToFif.isSelected()) {
+            eightToTen.setSelected(false);
+            elevenToThr.setSelected(false);
+        }
+    }
+
+    private void elevenToThrActionPerformed(ActionEvent evt) {
+        if (elevenToThr.isSelected()) {
+            eightToTen.setSelected(false);
+            thirteenToFif.setSelected(false);
+        }
+    }
+
+
+    private JButton createBtn;
+    private JButton copyBtn;
+    private JCheckBox continuity;
+    private JCheckBox capitality;
+    private JCheckBox specialChar;
+    private JCheckBox eightToTen;
+    private JCheckBox thirteenToFif;
+    private JCheckBox elevenToThr;
+    private JLabel explain;
+    private JLabel result;
 
 }

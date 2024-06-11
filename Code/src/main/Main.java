@@ -1,372 +1,780 @@
 package main;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 public class Main extends javax.swing.JFrame {
 
     public Main() {
+        setLocationRelativeTo(null);
         initComponents();
     }
 
     @SuppressWarnings("unchecked")
     private void initComponents() {
+        jPanel = new JPanel();
+        btn1 = new JButton();
+        btn2 = new JButton();
+        btn3 = new JButton();
+        btn4 = new JButton();
+        btn5 = new JButton();
+        btn6 = new JButton();
+        btn7 = new JButton();
+        btn8 = new JButton();
+        btn9 = new JButton();
+        btn10 = new JButton();
+        btn11 = new JButton();
+        btn12 = new JButton();
+        btn13 = new JButton();
+        btn14 = new JButton();
+        btn15 = new JButton();
+        label1 = new JLabel();
+        label2 = new JLabel();
+        label3 = new JLabel();
+        label4 = new JLabel();
+        label5 = new JLabel();
+        label6 = new JLabel();
+        label7 = new JLabel();
+        label8 = new JLabel();
+        label9 = new JLabel();
+        label10 = new JLabel();
+        label11 = new JLabel();
+        label12 = new JLabel();
+        label13 = new JLabel();
+        label14 = new JLabel();
+        label15 = new JLabel();
+        otpBtn = new JButton();
+        mainTitle = new JLabel();
+        randomPWBtn = new JButton();
+        showCheck = new Checkbox("Show Data (체크시 데이터 확인)");
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jButton16 = new javax.swing.JButton();
-        jLabel16 = new javax.swing.JLabel();
-        jScrollBar1 = new javax.swing.JScrollBar();
-        jButton17 = new javax.swing.JButton();
+        btn1.setFont(new java.awt.Font("맑은 고딕", 1, 12));
+        btn1.setText("+");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        btn2.setFont(new java.awt.Font("맑은 고딕", 1, 12));
+        btn2.setText("+");
 
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\hn004\\Desktop\\3학년\\오픈소스\\naver.jfif")); // NOI18N
+        btn3.setFont(new java.awt.Font("맑은 고딕", 1, 12));
+        btn3.setText("+");
 
-        jButton2.setFont(new java.awt.Font("맑은 고딕", 1, 28)); // NOI18N
-        jButton2.setText("+");
-        jButton2.setToolTipText("");
+        btn4.setFont(new java.awt.Font("맑은 고딕", 1, 12));
+        btn4.setText("+");
 
-        jButton3.setFont(new java.awt.Font("맑은 고딕", 1, 28)); // NOI18N
-        jButton3.setText("+");
-        jButton3.setToolTipText("");
+        btn5.setFont(new java.awt.Font("맑은 고딕", 1, 12));
+        btn5.setText("+");
 
-        jButton4.setFont(new java.awt.Font("맑은 고딕", 1, 28)); // NOI18N
-        jButton4.setText("+");
-        jButton4.setToolTipText("");
+        btn6.setFont(new java.awt.Font("맑은 고딕", 1, 12));
+        btn6.setText("+");
 
-        jButton5.setFont(new java.awt.Font("맑은 고딕", 1, 28)); // NOI18N
-        jButton5.setText("+");
-        jButton5.setToolTipText("");
+        btn7.setFont(new java.awt.Font("맑은 고딕", 1, 12));
+        btn7.setText("+");
 
-        jButton6.setFont(new java.awt.Font("맑은 고딕", 1, 28)); // NOI18N
-        jButton6.setText("+");
-        jButton6.setToolTipText("");
+        btn8.setFont(new java.awt.Font("맑은 고딕", 1, 12));
+        btn8.setText("+");
 
-        jButton7.setFont(new java.awt.Font("맑은 고딕", 1, 28)); // NOI18N
-        jButton7.setText("+");
-        jButton7.setToolTipText("");
+        btn9.setFont(new java.awt.Font("맑은 고딕", 1, 12));
+        btn9.setText("+");
 
-        jButton8.setFont(new java.awt.Font("맑은 고딕", 1, 28)); // NOI18N
-        jButton8.setText("+");
-        jButton8.setToolTipText("");
+        btn10.setFont(new java.awt.Font("맑은 고딕", 1, 12));
+        btn10.setText("+");
 
-        jButton9.setFont(new java.awt.Font("맑은 고딕", 1, 28)); // NOI18N
-        jButton9.setText("+");
-        jButton9.setToolTipText("");
+        btn11.setFont(new java.awt.Font("맑은 고딕", 1, 12));
+        btn11.setText("+");
 
-        jButton10.setFont(new java.awt.Font("맑은 고딕", 1, 28)); // NOI18N
-        jButton10.setText("+");
-        jButton10.setToolTipText("");
+        btn12.setFont(new java.awt.Font("맑은 고딕", 1, 12));
+        btn12.setText("+");
 
-        jButton11.setFont(new java.awt.Font("맑은 고딕", 1, 28)); // NOI18N
-        jButton11.setText("+");
-        jButton11.setToolTipText("");
+        btn13.setFont(new java.awt.Font("맑은 고딕", 1, 12));
+        btn13.setText("+");
 
-        jButton12.setFont(new java.awt.Font("맑은 고딕", 1, 28)); // NOI18N
-        jButton12.setText("+");
-        jButton12.setToolTipText("");
+        btn14.setFont(new java.awt.Font("맑은 고딕", 1, 12));
+        btn14.setText("+");
 
-        jButton13.setFont(new java.awt.Font("맑은 고딕", 1, 28)); // NOI18N
-        jButton13.setText("+");
-        jButton13.setToolTipText("");
+        btn15.setFont(new java.awt.Font("맑은 고딕", 1, 12));
+        btn15.setText("+");
 
-        jButton14.setFont(new java.awt.Font("맑은 고딕", 1, 28)); // NOI18N
-        jButton14.setText("+");
-        jButton14.setToolTipText("");
+        label1.setHorizontalAlignment(SwingConstants.CENTER);
+        label1.setText("null");
 
-        jButton15.setFont(new java.awt.Font("맑은 고딕", 1, 28)); // NOI18N
-        jButton15.setText("+");
-        jButton15.setToolTipText("");
+        label2.setHorizontalAlignment(SwingConstants.CENTER);
+        label2.setText("null");
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("네이버임");
+        label3.setHorizontalAlignment(SwingConstants.CENTER);
+        label3.setText("null");
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("null");
+        label4.setHorizontalAlignment(SwingConstants.CENTER);
+        label4.setText("null");
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("null");
+        label5.setHorizontalAlignment(SwingConstants.CENTER);
+        label5.setText("null");
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("null");
+        label6.setHorizontalAlignment(SwingConstants.CENTER);
+        label6.setText("null");
 
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("null");
+        label7.setHorizontalAlignment(SwingConstants.CENTER);
+        label7.setText("null");
 
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("null");
+        label8.setHorizontalAlignment(SwingConstants.CENTER);
+        label8.setText("null");
 
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("null");
+        label9.setHorizontalAlignment(SwingConstants.CENTER);
+        label9.setText("null");
 
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("null");
+        label10.setHorizontalAlignment(SwingConstants.CENTER);
+        label10.setText("null");
 
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("null");
+        label11.setHorizontalAlignment(SwingConstants.CENTER);
+        label11.setText("null");
 
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("null");
+        label12.setHorizontalAlignment(SwingConstants.CENTER);
+        label12.setText("null");
 
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("null");
+        label13.setHorizontalAlignment(SwingConstants.CENTER);
+        label13.setText("null");
 
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("null");
+        label14.setHorizontalAlignment(SwingConstants.CENTER);
+        label14.setText("null");
 
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setText("null");
+        label15.setHorizontalAlignment(SwingConstants.CENTER);
+        label15.setText("null");
 
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("null");
+        otpBtn.setText("OTP 인증하기");
 
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("null");
+        mainTitle.setFont(new java.awt.Font("맑은 고딕", 1, 24));
+        mainTitle.setHorizontalAlignment(SwingConstants.CENTER);
+        mainTitle.setText("Safe Local Lock");
 
-        jButton16.setText("OTP 인증하기");
+        randomPWBtn.setText("Random PW 생성");
 
-        jLabel16.setFont(new java.awt.Font("맑은 고딕", 1, 24)); // NOI18N
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("Safe Local Lock");
+        GroupLayout jPanelLayout = new GroupLayout(jPanel);
+        jPanel.setLayout(jPanelLayout);
+        jPanelLayout.setHorizontalGroup(
+                jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanelLayout.createSequentialGroup()
+                                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                        .addComponent(mainTitle, GroupLayout.PREFERRED_SIZE, 500, GroupLayout.PREFERRED_SIZE)
+                                                        .addGroup(jPanelLayout.createSequentialGroup()
+                                                                .addGap(30,30,30)
+                                                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                                                        .addComponent(btn1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                        .addComponent(label1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                        .addComponent(btn6, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(label6, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(btn11, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(label11, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE))
+                                                                .addGap(40, 40, 40)
+                                                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                                                        .addComponent(btn2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                        .addComponent(label2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                        .addComponent(btn7)
+                                                                        .addComponent(label7, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(btn12)
+                                                                        .addComponent(label12, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE))
+                                                                .addGap(40, 40, 40)
+                                                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                        .addGroup(jPanelLayout.createSequentialGroup()
+                                                                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                                        .addComponent(btn3)
+                                                                                        .addComponent(btn8)
+                                                                                        .addComponent(btn13)
+                                                                                        .addComponent(label3, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
+                                                                                        .addComponent(label8, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
+                                                                                        .addComponent(label13, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE))
+                                                                                .addGap(40, 40, 40)
+                                                                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                                        .addComponent(btn4)
+                                                                                        .addComponent(btn9)
+                                                                                        .addComponent(btn14)
+                                                                                        .addComponent(label4, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
+                                                                                        .addComponent(label9, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
+                                                                                        .addComponent(label14, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE))
+                                                                                .addGap(40, 40, 40)
+                                                                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                                        .addComponent(btn5)
+                                                                                        .addComponent(btn10)
+                                                                                        .addComponent(btn15)
+                                                                                        .addComponent(label5, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
+                                                                                        .addComponent(label10, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
+                                                                                        .addComponent(label15, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)))))
+                                                        .addGroup(jPanelLayout.createSequentialGroup()
+                                                                .addGap(5, 5, 5)
+                                                                .addComponent(randomPWBtn)
+                                                                .addGap(5, 5, 5)
+                                                                .addComponent(otpBtn)
+                                                                .addGap(50,50,50)
+                                                                .addComponent(showCheck)))
+                                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        );
 
-        jButton17.setText("Random PW 생성");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap(9, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                .addGap(18, 18, 18)
-                                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(jButton7)
-                                                                        .addComponent(jButton12)
-                                                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                                                .addGap(18, 18, 18)
-                                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                .addComponent(jButton4)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(jButton3)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(jButton6))
-                                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                .addComponent(jButton9)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(jButton11)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(jButton10))
-                                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                .addComponent(jButton13)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(jButton14)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(jButton15))
-                                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addGap(99, 99, 99)
-                                                .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(51, 51, 51)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                        .addComponent(jButton17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(jButton16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                                .addGap(78, 78, 78))))
-        );
-        jPanel1Layout.setVerticalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(20, 20, 20)
-                                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(32, 32, 32)
-                                                .addComponent(jButton16)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jButton17)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(14, 14, 14)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(jLabel1)
-                                                        .addComponent(jLabel2)
-                                                        .addComponent(jLabel3)
-                                                        .addComponent(jLabel4)
-                                                        .addComponent(jLabel5))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(jButton7)
-                                                        .addComponent(jButton5)
-                                                        .addComponent(jButton9)
-                                                        .addComponent(jButton11)
-                                                        .addComponent(jButton10))
-                                                .addGap(11, 11, 11)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(jLabel6)
-                                                        .addComponent(jLabel7)
-                                                        .addComponent(jLabel8)
-                                                        .addComponent(jLabel9)
-                                                        .addComponent(jLabel10))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(jButton8)
-                                                        .addComponent(jButton12)
-                                                        .addComponent(jButton13)
-                                                        .addComponent(jButton14)
-                                                        .addComponent(jButton15))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(jLabel11)
-                                                        .addComponent(jLabel12)
-                                                        .addComponent(jLabel13)
-                                                        .addComponent(jLabel14)
-                                                        .addComponent(jLabel15))
-                                                .addGap(0, 32, Short.MAX_VALUE))
-                                        .addComponent(jScrollBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        jPanelLayout.setVerticalGroup(
+                jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(mainTitle, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btn1, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btn2, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btn3, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btn4, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btn5, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(label1, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(label2, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(label3, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(label4, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(label5, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE))
+                                .addGap(30, 30, 30)
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btn6, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btn7, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btn8, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btn9, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btn10, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(label6, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(label7, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(label8, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(label9, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(label10, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE))
+                                .addGap(30, 30, 30)
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btn11, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btn12, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btn13, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btn14, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btn15, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(label11, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(label12, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(label13, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(label14, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(label15, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE))
+                                .addGap(46, 46, 46)
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(randomPWBtn)
+                                        .addComponent(otpBtn)
+                                        .addComponent(showCheck))
                                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
-    }
-    public static void main(String args[]) {
-
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+        btn1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
+                        if(label1.getText().equals("null")){
+                            AddData addData = new AddData(btn1,label1);
+                            addData.setVisible(true);
+                        }
+                        else{
+                            SaveAccount saveAccount = new SaveAccount(label1);
+                            saveAccount.setVisible(true);
+                        }
+                    }
+                    else{
+                        try {
+                            ShowData showData = new ShowData(label1);
+                            showData.setVisible(true);
+                        } catch (Exception ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    }
                 }
+                else{
+                    JOptionPane.showMessageDialog( Main.this , "OTP 인증을 마쳐주세요", "인증 오류", JOptionPane.ERROR_MESSAGE);
+                }
+
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Main().setVisible(true);
+        });
+        btn2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
+                        if(label2.getText().equals("null")){
+                            AddData addData = new AddData(btn2,label2);
+                            addData.setVisible(true);
+                        }
+                        else{
+                            SaveAccount saveAccount = new SaveAccount(label2);
+                            saveAccount.setVisible(true);
+                        }
+                    }
+                    else{
+                        try {
+                            ShowData showData = new ShowData(label2);
+                            showData.setVisible(true);
+                        } catch (Exception ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog( Main.this , "OTP 인증을 마쳐주세요", "인증 오류", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+        });
+        btn3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
+                        if(label3.getText().equals("null")){
+                            AddData addData = new AddData(btn3,label3);
+                            addData.setVisible(true);
+                        }
+                        else{
+                            SaveAccount saveAccount = new SaveAccount(label3);
+                            saveAccount.setVisible(true);
+                        }
+                    }
+                    else{
+                        try {
+                            ShowData showData = new ShowData(label3);
+                            showData.setVisible(true);
+                        } catch (Exception ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog( Main.this , "OTP 인증을 마쳐주세요", "인증 오류", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+        });
+        btn4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
+                        if(label4.getText().equals("null")){
+                            AddData addData = new AddData(btn4,label4);
+                            addData.setVisible(true);
+                        }
+                        else{
+                            SaveAccount saveAccount = new SaveAccount(label4);
+                            saveAccount.setVisible(true);
+                        }
+                    }
+                    else{
+                        try {
+                            ShowData showData = new ShowData(label4);
+                            showData.setVisible(true);
+                        } catch (Exception ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog( Main.this , "OTP 인증을 마쳐주세요", "인증 오류", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+        });
+        btn5.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
+                        if(label5.getText().equals("null")){
+                            AddData addData = new AddData(btn5,label5);
+                            addData.setVisible(true);
+                        }
+                        else{
+                            SaveAccount saveAccount = new SaveAccount(label5);
+                            saveAccount.setVisible(true);
+                        }
+                    }
+                    else{
+                        try {
+                            ShowData showData = new ShowData(label5);
+                            showData.setVisible(true);
+                        } catch (Exception ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog( Main.this , "OTP 인증을 마쳐주세요", "인증 오류", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+        });
+        btn6.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
+                        if(label6.getText().equals("null")){
+                            AddData addData = new AddData(btn6,label6);
+                            addData.setVisible(true);
+                        }
+                        else{
+                            SaveAccount saveAccount = new SaveAccount(label6);
+                            saveAccount.setVisible(true);
+                        }
+                    }
+                    else{
+                        try {
+                            ShowData showData = new ShowData(label6);
+                            showData.setVisible(true);
+                        } catch (Exception ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog( Main.this , "OTP 인증을 마쳐주세요", "인증 오류", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+        });
+        btn7.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
+                        if(label7.getText().equals("null")){
+                            AddData addData = new AddData(btn7,label7);
+                            addData.setVisible(true);
+                        }
+                        else{
+                            SaveAccount saveAccount = new SaveAccount(label7);
+                            saveAccount.setVisible(true);
+                        }
+                    }
+                    else{
+                        try {
+                            ShowData showData = new ShowData(label7);
+                            showData.setVisible(true);
+                        } catch (Exception ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog( Main.this , "OTP 인증을 마쳐주세요", "인증 오류", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+        });
+        btn8.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
+                        if(label8.getText().equals("null")){
+                            AddData addData = new AddData(btn8,label8);
+                            addData.setVisible(true);
+                        }
+                        else{
+                            SaveAccount saveAccount = new SaveAccount(label8);
+                            saveAccount.setVisible(true);
+                        }
+                    }
+                    else{
+                        try {
+                            ShowData showData = new ShowData(label8);
+                            showData.setVisible(true);
+                        } catch (Exception ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog( Main.this , "OTP 인증을 마쳐주세요", "인증 오류", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+        });
+        btn9.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
+                        if(label9.getText().equals("null")){
+                            AddData addData = new AddData(btn9,label9);
+                            addData.setVisible(true);
+                        }
+                        else{
+                            SaveAccount saveAccount = new SaveAccount(label9);
+                            saveAccount.setVisible(true);
+                        }
+                    }
+                    else{
+                        try {
+                            ShowData showData = new ShowData(label9);
+                            showData.setVisible(true);
+                        } catch (Exception ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog( Main.this , "OTP 인증을 마쳐주세요", "인증 오류", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+        });
+        btn10.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
+                        if(label10.getText().equals("null")){
+                            AddData addData = new AddData(btn10,label10);
+                            addData.setVisible(true);
+                        }
+                        else{
+                            SaveAccount saveAccount = new SaveAccount(label10);
+                            saveAccount.setVisible(true);
+                        }
+                    }
+                    else{
+                        try {
+                            ShowData showData = new ShowData(label10);
+                            showData.setVisible(true);
+                        } catch (Exception ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog( Main.this , "OTP 인증을 마쳐주세요", "인증 오류", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+        });
+        btn11.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
+                        if(label11.getText().equals("null")){
+                            AddData addData = new AddData(btn11,label11);
+                            addData.setVisible(true);
+                        }
+                        else{
+                            SaveAccount saveAccount = new SaveAccount(label11);
+                            saveAccount.setVisible(true);
+                        }
+                    }
+                    else{
+                        try {
+                            ShowData showData = new ShowData(label11);
+                            showData.setVisible(true);
+                        } catch (Exception ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog( Main.this , "OTP 인증을 마쳐주세요", "인증 오류", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+        });
+        btn12.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
+                        if(label12.getText().equals("null")){
+                            AddData addData = new AddData(btn12,label12);
+                            addData.setVisible(true);
+                        }
+                        else{
+                            SaveAccount saveAccount = new SaveAccount(label12);
+                            saveAccount.setVisible(true);
+                        }
+                    }
+                    else{
+                        try {
+                            ShowData showData = new ShowData(label12);
+                            showData.setVisible(true);
+                        } catch (Exception ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog( Main.this , "OTP 인증을 마쳐주세요", "인증 오류", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+        });
+        btn13.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
+                        if(label13.getText().equals("null")){
+                            AddData addData = new AddData(btn13,label13);
+                            addData.setVisible(true);
+                        }
+                        else{
+                            SaveAccount saveAccount = new SaveAccount(label13);
+                            saveAccount.setVisible(true);
+                        }
+                    }
+                    else{
+                        try {
+                            ShowData showData = new ShowData(label13);
+                            showData.setVisible(true);
+                        } catch (Exception ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog( Main.this , "OTP 인증을 마쳐주세요", "인증 오류", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+        });
+        btn14.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
+                        if(label14.getText().equals("null")){
+                            AddData addData = new AddData(btn14,label14);
+                            addData.setVisible(true);
+                        }
+                        else{
+                            SaveAccount saveAccount = new SaveAccount(label14);
+                            saveAccount.setVisible(true);
+                        }
+                    }
+                    else{
+                        try {
+                            ShowData showData = new ShowData(label14);
+                            showData.setVisible(true);
+                        } catch (Exception ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog( Main.this , "OTP 인증을 마쳐주세요", "인증 오류", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+        });
+        btn15.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(otpBtn.getText().equals("OTP 인증완료")){
+                    if(!showCheck.getState()){
+                        if(label15.getText().equals("null")){
+                            AddData addData = new AddData(btn15,label15);
+                            addData.setVisible(true);
+                        }
+                        else{
+                            SaveAccount saveAccount = new SaveAccount(label15);
+                            saveAccount.setVisible(true);
+                        }
+                    }
+                    else{
+                        try {
+                            ShowData showData = new ShowData(label15);
+                            showData.setVisible(true);
+                        } catch (Exception ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog( Main.this , "OTP 인증을 마쳐주세요", "인증 오류", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+        });
+
+        randomPWBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                randomPWBtnActionPerformed(e);
+            }
+        });
+        otpBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                otpBtnActionPerformed(e);
             }
         });
     }
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollBar jScrollBar1;
+    private void otpBtnActionPerformed(ActionEvent evt) {
+        OTP otp = new OTP(this);
+        otp.setVisible(true);
+    }
+    private void randomPWBtnActionPerformed(ActionEvent evt) {
+        GeneratePassword generatePassword = new GeneratePassword();
+        generatePassword.setVisible(true);
+    }
+    public void updateOTPButton() {
+        otpBtn.setText("OTP 인증완료");
+        otpBtn.setEnabled(false);
+    }
+
+
+    private JPanel jPanel;
+    private JButton btn1;
+    private JButton btn2;
+    private JButton btn3;
+    private JButton btn4;
+    private JButton btn5;
+    private JButton btn6;
+    private JButton btn7;
+    private JButton btn8;
+    private JButton btn9;
+    private JButton btn10;
+    private JButton btn11;
+    private JButton btn12;
+    private JButton btn13;
+    private JButton btn14;
+    private JButton btn15;
+    private JLabel label1;
+    private JLabel label2;
+    private JLabel label3;
+    private JLabel label4;
+    private JLabel label5;
+    private JLabel label6;
+    private JLabel label7;
+    private JLabel label8;
+    private JLabel label9;
+    private JLabel label10;
+    private JLabel label11;
+    private JLabel label12;
+    private JLabel label13;
+    private JLabel label14;
+    private JLabel label15;
+    private JButton otpBtn;
+    private JLabel mainTitle;
+    private JButton randomPWBtn;
+    private Checkbox showCheck;
 }
