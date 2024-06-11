@@ -131,7 +131,13 @@ public class FindID extends JFrame {
     }
     private String searchAccount(String birthdayToSearch, String nameToSearch) throws FileNotFoundException {
         String foundId = "";
-        try (BufferedReader reader = new BufferedReader(new FileReader("Code/src/main/account.txt"))) {
+        try {
+            File dataFile = new File("Code/src/main/account.txt");
+            if(!dataFile.exists()){
+                JOptionPane.showMessageDialog(this, "계정을 먼저 생성해주세요!");
+                return null;
+            }
+            BufferedReader reader = new BufferedReader(new FileReader("Code/src/main/account.txt")) ;
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");

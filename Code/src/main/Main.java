@@ -4,10 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.io.*;
+import java.util.ArrayList;
 
 
 public class Main extends javax.swing.JFrame {
@@ -18,6 +18,7 @@ public class Main extends javax.swing.JFrame {
     private JLabel mainTitle;
     private JButton randomPWbuttons;
     private Checkbox showCheck;
+    private Checkbox deleteCheck;
     private class ButtonActionListener implements ActionListener {
         private final int index;
 
@@ -32,30 +33,59 @@ public class Main extends javax.swing.JFrame {
                     if (buttons[index].getText().equals("+")) {
                         AddData addData = new AddData(buttons[index], labels[index]);
                         addData.setVisible(true);
-                        if(!buttons[index].getText().equals("+")){
-                            }
+                        buttons[index].setFont(new java.awt.Font("맑은 고딕", 1, 14));
                     }
                     else {
                         BufferedReader reader = null;
+                        BufferedWriter writer = null;
+                        String[] parts = null;
+                        String line;
+                        ArrayList<String> lines = new ArrayList<>();
+                        ArrayList<String> header = new ArrayList<>();
                         try {
                             reader = new BufferedReader(new FileReader("Code/src/main/Data.txt"));
-                            String line;
-                            for( int i = 0 ; i < index+1 ; i++){
-                                line = reader.readLine();
+                            if(deleteCheck.getState()){
+                                while((line = reader.readLine()) != null){
+                                    parts = line.split(",");
+                                    header.add(line.substring(0,parts[0].length()));
+                                    lines.add(line);
+                                }
+                                reader.close();
+                                int delete = JOptionPane.showConfirmDialog(null, "데이터를 삭제하시겠습니까?", "확인", JOptionPane.YES_NO_OPTION);
+                                if(delete == JOptionPane.YES_OPTION){
+                                    lines.remove(header.indexOf(buttons[index].getText()));
+                                    writer = new BufferedWriter(new FileWriter("Code/src/main/Data.txt"));
+                                    for(String l : lines){
+                                        writer.write(l);
+                                        writer.newLine();
+                                    }
+                                    writer.close();
+                                }
+                                buttons[index].setText("+");
+                                labels[index].setText("null");
+                                buttons[index].setFont(new java.awt.Font("맑은 고딕", 1, 28));
                             }
-                            if((line = reader.readLine()) != null){
-                                new JFrame()
+                            else if(!buttons[index].getText().equals("+")){
+                                while((line = reader.readLine()) != null){
+                                    parts = line.split(",");
+                                    header.add(line.substring(0,parts[0].length()));
+                                    lines.add(line);
+                                }
+                                reader.close();
+                                if(!header.contains(buttons[index].getText())){
+                                    SaveAccount saveAccount = new SaveAccount(labels[index]);
+                                    saveAccount.setVisible(true);
+                                }
+
                             }
                         } catch (Exception ex) {
                             throw new RuntimeException(ex);
                         }
 
-                        SaveAccount saveAccount = new SaveAccount(labels[index]);
-                        saveAccount.setVisible(true);
-                    }
-                    buttons[index].setFont(new java.awt.Font("맑은 고딕", 1, 12));
-                }
 
+                    }
+
+                }
                 else {
                     try {
                         ShowData showData = new ShowData(labels[index]);
@@ -79,6 +109,10 @@ public class Main extends javax.swing.JFrame {
         jPanel = new JPanel();
         buttons = new JButton[15];
         labels = new JLabel[15];
+        File dataFile = new File("Code/src/main/Data.txt");
+        if(!dataFile.exists()){
+            dataFile.createNewFile();
+        }
         BufferedReader reader = new BufferedReader(new FileReader("Code/src/main/Data.txt"));
         String line;
         for (int i = 0; i < 15; i++) {
@@ -104,7 +138,9 @@ public class Main extends javax.swing.JFrame {
         mainTitle = new JLabel();
         randomPWbuttons = new JButton();
         showCheck = new Checkbox("Show Data (체크시 데이터 확인)");
+        deleteCheck = new Checkbox("Delete Data (체크시 데이터 삭제)");
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+
 
         otpbuttons.setText("OTP 인증하기");
 
@@ -168,6 +204,9 @@ public class Main extends javax.swing.JFrame {
                                                                                         .addComponent(labels[9], GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                                                         .addComponent(labels[14], GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                                                         .addGroup(jPanelLayout.createSequentialGroup()
+                                                        .addGap(289,289,289)
+                                                        .addComponent(deleteCheck))
+                                                        .addGroup(jPanelLayout.createSequentialGroup()
                                                                 .addGap(5, 5, 5)
                                                                 .addComponent(randomPWbuttons)
                                                                 .addGap(5, 5, 5)
@@ -224,7 +263,10 @@ public class Main extends javax.swing.JFrame {
                                         .addComponent(labels[12], GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(labels[13], GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(labels[14], GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE))
-                                .addGap(46, 46, 46)
+                                .addGap(23,23,23)
+                                .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(deleteCheck))
+                                .addGap(23, 23, 23)
                                 .addGroup(jPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(randomPWbuttons)
                                         .addComponent(otpbuttons)
@@ -245,7 +287,22 @@ public class Main extends javax.swing.JFrame {
         );
 
         pack();
-
+        deleteCheck.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if(deleteCheck.isEnabled()){
+                    showCheck.setState(false);
+                }
+            }
+        });
+        showCheck.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if(showCheck.isEnabled()){
+                    deleteCheck.setState(false);
+                }
+            }
+        });
 
         randomPWbuttons.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

@@ -4,10 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class FindPasswd extends JFrame {
 
@@ -161,7 +158,13 @@ public class FindPasswd extends JFrame {
 
     private String searchAccount(String id, String question, String answer) throws FileNotFoundException {
         String foundPasswd = "";
-        try (BufferedReader reader = new BufferedReader(new FileReader("Code/src/main/account.txt"))) {
+        try {
+            File dataFile = new File("Code/src/main/account.txt");
+            if(!dataFile.exists()){
+                JOptionPane.showMessageDialog(this, "계정을 먼저 생성해주세요!");
+                return null;
+            }
+            BufferedReader reader = new BufferedReader(new FileReader("Code/src/main/account.txt"));
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");

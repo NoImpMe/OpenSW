@@ -53,8 +53,8 @@ public class Register extends JFrame {
         idInput = new JTextField(20);
         idInput.setBounds(150, 80, 165, 25);
         panel.add(idInput);
-        pwLabel = new JLabel("Password:");
-        pwLabel.setBounds(20, 110, 80, 25);
+        pwLabel = new JLabel("Password(한글X):");
+        pwLabel.setBounds(20, 110, 130, 25);
         panel.add(pwLabel);
         pwInput = new JTextField(20);
         pwInput.setBounds(150, 110, 165, 25);
@@ -97,7 +97,11 @@ public class Register extends JFrame {
                             case 3: num = "3";
                         }
                         try {
-                            BufferedWriter writer = new BufferedWriter(new FileWriter("Code/src/main/account.txt",true));
+                            File dataFile = new File("Code/src/main/account.txt");
+                            if(!dataFile.exists()){
+                                dataFile.createNewFile();
+                            }
+                            BufferedWriter writer = new BufferedWriter(new FileWriter(dataFile,true));
                             writer.write(name+","+birth+","+userID+","+password+","+num+","+answer);
                             writer.newLine();
                             writer.close();

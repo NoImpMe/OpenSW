@@ -3,6 +3,7 @@ package main;
 import javax.swing.*;
 import java.awt.event.*;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 public class Login extends JFrame {
@@ -108,6 +109,11 @@ public class Login extends JFrame {
         startBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 try {
+                    File dataFile = new File("Code/src/main/account.txt");
+                    if(!dataFile.exists()){
+                        JOptionPane.showMessageDialog(Login.this, "계정을 먼저 생성해주세요!");
+                        return;
+                    }
                     String id = idField.getText();
                     String password = new String(pwField.getPassword());
                     BufferedReader reader = new BufferedReader(new FileReader("Code/src/main/account.txt"));
