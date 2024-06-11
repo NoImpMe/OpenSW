@@ -42,7 +42,7 @@ public class AddData extends JFrame {
         explain.setText("추가 할 데이터를 입력해주세요.");
 
         siteName.setText("사이트 이름");
-        max.setText("최대 4자까지 가능");
+        max.setText("최대 3자까지 가능");
         addBtn.setText("추가");
 
         cancelBtn.setText("취소");
@@ -110,7 +110,11 @@ public class AddData extends JFrame {
         addBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                addBtnActionPerformed(e);
+                try {
+                    addBtnActionPerformed(e);
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
                 dispose();
             }
         });
@@ -121,14 +125,25 @@ public class AddData extends JFrame {
             }
         });
     }
-
-    private void addBtnActionPerformed(ActionEvent evt){
-        if(nameInput.getText() == "" || nameInput.getText().length() > 4){
+    private void addBtnActionPerformed(ActionEvent evt) throws Exception{
+        if(nameInput.getText().isEmpty() || nameInput.getText().length() > 3){
             JOptionPane.showMessageDialog(this, "올바른 이름을 입력해주세요", "입력 오류", JOptionPane.ERROR_MESSAGE);
         }
         else{
-            jLabel.setText(nameInput.getText());
-            jButton.setText(nameInput.getText());
+            BufferedReader reader = new BufferedReader(new FileReader("Code/src/main/Data.txt"));
+            String line;
+            boolean check = true;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts[0].equals(nameInput.getText())) {
+                    check = false;
+                    JOptionPane.showMessageDialog(this, "이미 사용된 이름 입니다.", "생성 오류", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            if(check){
+                jLabel.setText(nameInput.getText());
+                jButton.setText(nameInput.getText());
+            }
         }
     }
 

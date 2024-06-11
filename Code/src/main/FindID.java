@@ -137,9 +137,11 @@ public class FindID extends JFrame {
                 String[] parts = line.split(",");
                 if (parts[1].equals(birthdayToSearch) && parts[0].equals(nameToSearch)) {
                     foundId = parts[2];
-                } else {
-                    JOptionPane.showMessageDialog(FindID.this, "입력한 정보에 맞는 ID가 없습니다.");
                 }
+            }
+            if(foundId.isEmpty()){
+                JOptionPane.showMessageDialog(FindID.this, "입력한 정보에 맞는 ID가 없습니다.");
+
             }
             reader.close();
             return foundId;

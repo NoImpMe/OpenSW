@@ -167,9 +167,11 @@ public class FindPasswd extends JFrame {
                 String[] parts = line.split(",");
                 if (parts[2].equals(idInput.getText()) && parts[4].equals(question) && parts[5].equals(answerInput.getText())) {
                     foundPasswd = parts[3];
-                } else {
-                    JOptionPane.showMessageDialog(FindPasswd.this, "입력한 정보에 맞는 Password가 없습니다.");
                 }
+            }
+            if(foundPasswd.isEmpty()){
+                JOptionPane.showMessageDialog(FindPasswd.this, "입력한 정보에 맞는 Password가 없습니다.");
+
             }
             reader.close();
             return foundPasswd;
