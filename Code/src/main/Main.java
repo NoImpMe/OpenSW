@@ -139,9 +139,9 @@ public class Main extends javax.swing.JFrame {
         randomPWbuttons = new JButton();
         showCheck = new Checkbox("Show Data (체크시 데이터 확인)");
         deleteCheck = new Checkbox("Delete Data (체크시 데이터 삭제)");
-        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-
+        setResizable(false);
         otpbuttons.setText("OTP 인증하기");
 
         mainTitle.setFont(new java.awt.Font("맑은 고딕", 1, 24));
